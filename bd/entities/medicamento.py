@@ -1,5 +1,5 @@
 class Medicamento:
-    def __init__(self, medicamento_id=None, nome=None, preco=None, quantidade_estoque=None):
+    def __init__(self, medicamento_id, nome, preco, quantidade_estoque):
         self._medicamento_id = medicamento_id  
         self._nome = nome  
         self._preco = preco  
