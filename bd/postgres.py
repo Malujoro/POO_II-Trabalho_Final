@@ -81,7 +81,7 @@ class PostgressDB:
         """)
         self._conn.commit()
 
-    def insert(self, dados: list[tuple[str, str]]) -> None:
+    def insert(self, medicamento: Medicamento) -> None:
         """
         Método insert:
 
@@ -94,11 +94,11 @@ class PostgressDB:
         Se não, o comando 'executemany' insere multiplas linhas de uma vez só (as duas strings passadas em cada tupla da lista).
         O comando 'self._conn.commit()' é usado para salvar as alterações.
         """
-        if (dados):
+        if (medicamento):
             self._cursor.executemany("""
                 INSERT INTO medicamento (nome, preco, quantidade_estoque)
                 VALUES (%s, %s, %s)
-            """, dados)
+            """, (medicamento.nome, medicamento.preco, medicamento.quantidade_estoque))
             self._conn.commit()
 
     def select_all(self):
