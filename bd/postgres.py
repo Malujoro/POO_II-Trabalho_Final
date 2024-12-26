@@ -1,5 +1,5 @@
 import psycopg2
-from medicamento import Medicamento
+from entities.medicamento import Medicamento
 """
 Importação:
 
@@ -7,11 +7,11 @@ Importação:
 """
 
 
-class PostgressDB:
+class PostgresDB:
     """
-    Classe PostgressDB:
+    Classe PostgresDB:
 
-    Gerenciar as operações do banco de dados Postgress.
+    Gerenciar as operações do banco de dados Postgres.
     Permite conectar, inserir mensagem e desconectar.
     """
 
@@ -19,7 +19,7 @@ class PostgressDB:
         """
         Construção da classe:
 
-        Inicializa a instância do PostgressDB e estabelece uma conexão com o banco.
+        Inicializa a instância do PostgresDB e estabelece uma conexão com o banco.
 
         -> Atributos (privados):
 
@@ -61,8 +61,9 @@ class PostgressDB:
                 port=self._port
             )
 
-            self._cursor = self._conn.cursor()
-            self.create_table()
+            if(self._conn != None):
+                self._cursor = self._conn.cursor()
+                self.create_table()
 
     def create_table(self) -> None:
         """
@@ -71,15 +72,9 @@ class PostgressDB:
         Cria a tabela com as colunas: id, role, message e date.
         O comando 'self._conn.commit()' é usado para salvar as alterações.
         """
-        self._cursor.execute("""
-            CREATE TABLE IF NOT EXISTS medicamento (
-                medicamento_id INT PRIMARY KEY AUTO_INCREMENT,
-                nome VARCHAR(255) NOT NULL,
-                preco DECIMAL(10, 2),
-                quantidade_estoque INT,
-            )
-        """)
-        self._conn.commit()
+        if(self._cursor != None):
+            self._cursor.execute("""CREATE TABLE IF NOT EXISTS medicamento (medicamento_id INT PRIMARY KEY AUTO_INCREMENT, nome VARCHAR(255) NOT NULL, preco DECIMAL(10, 2), quantidade_estoque INT)""")
+            self._conn.commit()
 
     def insert(self, medicamento: Medicamento) -> None:
         """
@@ -95,10 +90,7 @@ class PostgressDB:
         O comando 'self._conn.commit()' é usado para salvar as alterações.
         """
         if (medicamento):
-            self._cursor.executemany("""
-                INSERT INTO medicamento (nome, preco, quantidade_estoque)
-                VALUES (%s, %s, %s)
-            """, (medicamento.nome, medicamento.preco, medicamento.quantidade_estoque))
+            self._cursor.executemany("""INSERT INTO medicamento (nome, preco, quantidade_estoque) VALUES (%s, %s, %s)""", (medicamento.nome, medicamento.preco, medicamento.quantidade_estoque))
             self._conn.commit()
 
     def select_all(self):
@@ -117,10 +109,7 @@ class PostgressDB:
         Método delete:
         """
         if (id):
-            self._cursor.executemany("""
-                DELETE FROM medicamento
-                WHERE medicamento_id = %s;
-            """, id)
+            self._cursor.executemany("""DELETE FROM medicamento WHERE medicamento_id = %s;""", id)
             self._conn.commit()
 
     def update(self, medicamento: Medicamento) -> None:
@@ -128,14 +117,8 @@ class PostgressDB:
         Método delete:
         """
         if (medicamento):
-            self._cursor.executemany("""
-                UPDATE medicamento
-                SET nome = %s, preco = %s, quantidade_estoque = %s
-                WHERE medicamento_id = %s;
-            """, (medicamento.nome, medicamento.preco, medicamento.quantidade_estoque, medicamento.medicamento_id))
+            self._cursor.executemany("""UPDATE medicamento SET nome = %s, preco = %s, quantidade_estoque = %s WHERE medicamento_id = %s;""", (medicamento.nome, medicamento.preco, medicamento.quantidade_estoque, medicamento.medicamento_id))
             self._conn.commit()
-
-
 
     def disconnect(self) -> None:
         """
