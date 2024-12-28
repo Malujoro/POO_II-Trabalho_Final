@@ -1,0 +1,13 @@
+<RCC>
+  <qresource prefix="images">
+    <file>images/001-caixa.png</file>
+    <file>images/002-calendrio.png</file>
+    <file>images/003-balo-de-fala.png</file>
+    <file>images/logo.png</file>
+    <file>images/lupa-arredondada.png</file>
+    <file>images/001-shopping-basket.png</file>
+    <file>images/002-entrar.png</file>
+    <file>images/003-pessoa.png</file>
+    <file>images/logofolha.png</file>
+  </qresource>
+</RCC>
