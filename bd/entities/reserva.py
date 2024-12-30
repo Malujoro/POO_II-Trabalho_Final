@@ -4,12 +4,12 @@ class Reserva:
 
     Representa uma reserva de medicamentos feita por um cliente.
     """
-    def __init__(self, reserva_id=None, cpf_cliente=None, nome_cliente=None, data_limite=None, medicamentos=None):
+    def __init__(self, reserva_id=None, cpf_cliente=None, nome_cliente=None, data_limite=None, medicamentos=[]):
         self._reserva_id = reserva_id
         self._cpf_cliente = cpf_cliente
         self._nome_cliente = nome_cliente
         self._data_limite = data_limite
-        self._medicamentos = []
+        self._medicamentos = medicamentos
 
     # Getters e Setters
     @property
