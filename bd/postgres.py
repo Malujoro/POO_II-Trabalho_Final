@@ -73,10 +73,42 @@ class PostgresDB:
         O comando 'self._conn.commit()' é usado para salvar as alterações.
         """
         if(self._cursor != None):
-            self._cursor.execute("""CREATE TABLE IF NOT EXISTS medicamento (medicamento_id INT PRIMARY KEY AUTO_INCREMENT, nome VARCHAR(255) NOT NULL, preco DECIMAL(10, 2), quantidade_estoque INT)""")
+            self._cursor.execute("""
+                CREATE TABLE IF NOT EXISTS medicamento (
+                medicamento_id INT PRIMARY KEY AUTO_INCREMENT, 
+                nome VARCHAR(255) NOT NULL, preco DECIMAL(10, 2), 
+                quantidade_estoque INT
+                )
+                """
+            )
+                # Tabela de reservas
+            self._cursor.execute(
+                """
+                CREATE TABLE IF NOT EXISTS reservas (
+                    reserva_id INT PRIMARY KEY AUTO_INCREMENT,
+                    cpf_cliente VARCHAR(14) NOT NULL,
+                    nome_cliente VARCHAR(255) NOT NULL,
+                    data_limite DATETIME DEFAULT CURRENT_TIMESTAMP
+                )
+                """
+            )
+
+            # Tabela de relacionamento reserva_medicamentos
+            self._cursor.execute(
+                """
+                CREATE TABLE IF NOT EXISTS reserva_medicamentos (
+                    reserva_id INT NOT NULL,
+                    medicamento_id INT NOT NULL,
+                    quantidade INT NOT NULL,
+                    PRIMARY KEY (reserva_id, medicamento_id),
+                    FOREIGN KEY (reserva_id) REFERENCES reservas(reserva_id) ON DELETE CASCADE,
+                    FOREIGN KEY (medicamento_id) REFERENCES medicamento(medicamento_id) ON DELETE CASCADE
+                )
+                """
+            )
             self._conn.commit()
 
-    def insert(self, medicamento: Medicamento) -> None:
+    def insert_medicamento(self, medicamento: Medicamento) -> None:
         """
         Método insert:
 
@@ -93,7 +125,7 @@ class PostgresDB:
             self._cursor.executemany("""INSERT INTO medicamento (nome, preco, quantidade_estoque) VALUES (%s, %s, %s)""", (medicamento.nome, medicamento.preco, medicamento.quantidade_estoque))
             self._conn.commit()
 
-    def select_all(self):
+    def select_all_medicamentos(self):
         """
         Método select_all:
         
@@ -104,7 +136,7 @@ class PostgresDB:
         rows = self._cursor.fetchall()
         return rows  
 
-    def delete_by_id(self, id:str ) -> None:
+    def delete_medicamento_by_id(self, id:str ) -> None:
         """
         Método delete:
         """
@@ -112,13 +144,116 @@ class PostgresDB:
             self._cursor.executemany("""DELETE FROM medicamento WHERE medicamento_id = %s;""", id)
             self._conn.commit()
 
-    def update(self, medicamento: Medicamento) -> None:
+    def update_medicamento(self, medicamento: Medicamento) -> None:
         """
         Método delete:
         """
         if (medicamento):
             self._cursor.executemany("""UPDATE medicamento SET nome = %s, preco = %s, quantidade_estoque = %s WHERE medicamento_id = %s;""", (medicamento.nome, medicamento.preco, medicamento.quantidade_estoque, medicamento.medicamento_id))
             self._conn.commit()
+
+    def insert_reserva(self, reserva):
+        """
+        Método insert_reserva:
+
+        Parâmetro:
+        reserva (Reserva): um objeto contendo os dados da reserva.
+
+        Insere uma nova reserva na tabela 'reservas' e vincula os medicamentos reservados na tabela 'reserva_medicamentos'.
+        """
+        if reserva:
+            # Inserir na tabela reservas
+            self._cursor.execute(
+                """
+                INSERT INTO reservas (cpf_cliente, nome_cliente, data_limite) VALUES (%s, %s, %s)
+                """,
+                (reserva.cpf_cliente, reserva.nome_cliente, reserva.data_limite)
+            )
+            reserva_id = self._cursor.lastrowid
+
+            # Inserir medicamentos na tabela reserva_medicamentos
+            reserva_medicamentos = [
+                (reserva_id, medicamento.medicamento_id, medicamento.quantidade)
+                for medicamento in reserva.medicamentos
+            ]
+            self._cursor.executemany(
+                """
+                INSERT INTO reserva_medicamentos (reserva_id, medicamento_id, quantidade) VALUES (%s, %s, %s)
+                """,
+                reserva_medicamentos
+            )
+            self._conn.commit()
+
+    def select_all_reservas(self):
+        """
+        Método select_all_reservas:
+
+        Retorna todas as reservas da tabela 'reservas', incluindo os medicamentos associados.
+        """
+        self._cursor.execute(
+            """
+            SELECT r.reserva_id, r.cpf_cliente, r.nome_cliente, r.data_limite, 
+                rm.medicamento_id, m.nome, rm.quantidade
+            FROM reservas r
+            LEFT JOIN reserva_medicamentos rm ON r.reserva_id = rm.reserva_id
+            LEFT JOIN medicamento m ON rm.medicamento_id = m.medicamento_id
+            """
+        )
+        rows = self._cursor.fetchall()
+        return rows
+
+    def delete_reserva_by_id(self, reserva_id: int) -> None:
+        """
+        Método delete_reserva_by_id:
+
+        Remove uma reserva e seus medicamentos associados pelo ID da reserva.
+        """
+        if reserva_id:
+            self._cursor.execute(
+                """
+                DELETE FROM reservas WHERE reserva_id = %s
+                """,
+                (reserva_id,)
+            )
+            self._conn.commit()
+
+    def update_reserva(self, reserva):
+        """
+        Método update_reserva:
+
+        Atualiza os dados de uma reserva e os medicamentos associados.
+        """
+        if reserva:
+            # Atualizar dados da reserva
+            self._cursor.execute(
+                """
+                UPDATE reservas SET cpf_cliente = %s, nome_cliente = %s, data_limite = %s WHERE reserva_id = %s
+                """,
+                (reserva.cpf_cliente, reserva.nome_cliente, reserva.data_limite, reserva.reserva_id)
+            )
+
+            # Remover medicamentos antigos
+            self._cursor.execute(
+                """
+                DELETE FROM reserva_medicamentos WHERE reserva_id = %s
+                """,
+                (reserva.reserva_id,)
+            )
+
+            # Inserir medicamentos atualizados
+            reserva_medicamentos = [
+                (reserva.reserva_id, medicamento.medicamento_id, medicamento.quantidade)
+                for medicamento in reserva.medicamentos
+            ]
+            self._cursor.executemany(
+                """
+                INSERT INTO reserva_medicamentos (reserva_id, medicamento_id, quantidade) VALUES (%s, %s, %s)
+                """,
+                reserva_medicamentos
+            )
+            self._conn.commit()
+
+
 
     def disconnect(self) -> None:
         """
