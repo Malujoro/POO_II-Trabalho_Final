@@ -17,6 +17,15 @@ class TestMedicamento:
         assert medicamento.preco == "10.50"
         assert medicamento.quantidade_estoque == "15"
 
+
+    def test_medicamento_id_setter(self, medicamento: Medicamento):
+        """Testa a alteração do id de uma instância Medicamento"""
+        medicamento.medicamento_id = "2"
+        assert medicamento.medicamento_id == "2"
+        assert medicamento.nome == "Teste1"
+        assert medicamento.preco == "10.50"
+        assert medicamento.quantidade_estoque == "15"
+
     
     def test_nome_setter(self, medicamento: Medicamento):
         """Testa a alteração de nome de uma instância Medicamento"""

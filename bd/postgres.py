@@ -73,7 +73,8 @@ class PostgresDB:
         O comando 'self._conn.commit()' é usado para salvar as alterações.
         """
         if(self._cursor != None):
-            self._cursor.execute("""
+            self._cursor.execute(
+                """
                 CREATE TABLE IF NOT EXISTS medicamento (
                 medicamento_id INT PRIMARY KEY AUTO_INCREMENT, 
                 nome VARCHAR(255) NOT NULL, preco DECIMAL(10, 2), 
