@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import Mock, patch, call
-from postgres import PostgresDB
+from postgres import Postgres
 from datetime import datetime
 from medicamento import Medicamento
 
@@ -35,7 +35,7 @@ class TestPostgres:
     @pytest.fixture
     def postgres(self, mock_connect: Mock):
         """Fixture que retorna uma instância do postgres"""
-        return PostgresDB(dbname="mydatabase", user="user", password="password", host="localhost", port="5410")
+        return Postgres(dbname="mydatabase", user="user", password="password", host="localhost", port="5410")
 
     @pytest.fixture
     def mock_medic(self):
@@ -67,7 +67,7 @@ class TestPostgres:
         return create_mock_reserva
     
 
-    def test_constructor(self, postgres: PostgresDB, mock_connect: Mock):
+    def test_constructor(self, postgres: Postgres, mock_connect: Mock):
         """Testa a inicialização de uma instância Postgres"""
         assert postgres._dbname == "mydatabase"
         assert postgres._user == "user"
@@ -79,7 +79,7 @@ class TestPostgres:
         mock_connect.assert_called_once()
 
 
-    def test_connect(self, postgres: PostgresDB, mock_connect: Mock, mock_conn: Mock):
+    def test_connect(self, postgres: Postgres, mock_connect: Mock, mock_conn: Mock):
         """Testa a conexão de uma instância Postgres"""
         mock_connect.return_value = mock_conn
         
@@ -87,23 +87,20 @@ class TestPostgres:
         mock_connect.assert_called()
 
 
-    def test_create_table(self, postgres: PostgresDB, mock_conn: Mock, mock_cursor: Mock):
+    def test_create_all_tables(self, postgres: Postgres, mock_conn: Mock, mock_cursor: Mock):
         """Testa a criação de uma tabela de uma instância Postgres"""
         postgres._cursor = mock_cursor
         postgres._conn = mock_conn
-        postgres.create_table()
+        postgres.create_all_tables()
         
-        chamadas = [
-            call.execute(
+        args = [
                 """
                 CREATE TABLE IF NOT EXISTS medicamento (
                 medicamento_id INT PRIMARY KEY AUTO_INCREMENT, 
                 nome VARCHAR(255) NOT NULL, preco DECIMAL(10, 2), 
                 quantidade_estoque INT
                 )
-                """
-            ),
-            call.execute(
+                """,
                 """
                 CREATE TABLE IF NOT EXISTS reservas (
                     reserva_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -111,9 +108,7 @@ class TestPostgres:
                     nome_cliente VARCHAR(255) NOT NULL,
                     data_limite DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
-                """
-            ),
-            call.execute(
+                """,
                 """
                 CREATE TABLE IF NOT EXISTS reserva_medicamentos (
                     reserva_id INT NOT NULL,
@@ -124,8 +119,9 @@ class TestPostgres:
                     FOREIGN KEY (medicamento_id) REFERENCES medicamento(medicamento_id) ON DELETE CASCADE
                 )
                 """
-            ),
         ]
+
+        chamadas = [call.execute(item) for item in args]
 
         mock_cursor.assert_has_calls(chamadas, any_order=False)
 
@@ -137,7 +133,7 @@ class TestPostgres:
         ("Teste2", "12.00", "10"),
         ("Teste3", "2.75", "3"),
     ])
-    def test_insert_medicamento(self, postgres: PostgresDB, mock_conn: Mock, mock_cursor: Mock, mock_medic: Mock, nome: str, preco: str, quantidade_estoque: str):
+    def test_insert_medicamento(self, postgres: Postgres, mock_conn: Mock, mock_cursor: Mock, mock_medic: Mock, nome: str, preco: str, quantidade_estoque: str):
         """Testa a inserção de medicamentos em uma instância Postgres"""
         medicamento = mock_medic(nome, preco, quantidade_estoque)
         postgres._cursor = mock_cursor
@@ -148,7 +144,7 @@ class TestPostgres:
         mock_conn.commit.assert_called_once()
 
 
-    def test_select_all_medicamentos(self, postgres: PostgresDB, mock_cursor: Mock):
+    def test_select_all_medicamentos(self, postgres: Postgres, mock_cursor: Mock):
         """Testa a recuperação de medicamentos em uma instância Postgres"""
         postgres._cursor = mock_cursor
         rows = postgres.select_all_medicamentos()
@@ -163,7 +159,7 @@ class TestPostgres:
         ("2"),
         ("3"),
     ])
-    def test_delete_medicamento_by_id(self, postgres: PostgresDB, mock_cursor: Mock, mock_conn: Mock, id: str):
+    def test_delete_medicamento_by_id(self, postgres: Postgres, mock_cursor: Mock, mock_conn: Mock, id: str):
         """Testa a deleção de um medicamento em uma instância Postgres"""
         postgres._cursor = mock_cursor
         postgres._conn = mock_conn
@@ -178,7 +174,7 @@ class TestPostgres:
         ("Teste2", "12.00", "10", "2"),
         ("Teste3", "2.75", "3", "3"),
     ])
-    def test_update_medicamento(self, postgres: PostgresDB, mock_conn: Mock, mock_cursor: Mock, mock_medic: Mock, nome: str, preco: str, quantidade_estoque: str, id: str):
+    def test_update_medicamento(self, postgres: Postgres, mock_conn: Mock, mock_cursor: Mock, mock_medic: Mock, nome: str, preco: str, quantidade_estoque: str, id: str):
         """Testa a atualização de medicamentos em uma instância Postgres"""
         medicamento = mock_medic(nome, preco, quantidade_estoque, id)
         postgres._cursor = mock_cursor
@@ -194,7 +190,7 @@ class TestPostgres:
         ("2", "222.222.222-22", "José", "02/02/2022", [("Teste2", "12.00", "10", "2")],),
         ("3", "333.333.333-33", "Carlos", "03/03/2023", [("Teste3", "2.75", "3", "3")],),
     ])
-    def test_insert_reserva(self, postgres: PostgresDB, mock_conn: Mock, mock_cursor: Mock, mock_reserva: Mock, reserva_id: int, cpf_cliente: str, nome_cliente: str, data_limite: datetime, medicamentos: list[Medicamento]):
+    def test_insert_reserva(self, postgres: Postgres, mock_conn: Mock, mock_cursor: Mock, mock_reserva: Mock, reserva_id: int, cpf_cliente: str, nome_cliente: str, data_limite: datetime, medicamentos: list[Medicamento]):
         """Testa a inserção de reservas em uma instância Postgres"""
         reserva = mock_reserva(reserva_id, cpf_cliente, nome_cliente, data_limite, medicamentos)
         
@@ -226,7 +222,7 @@ class TestPostgres:
         mock_conn.commit.assert_called_once()
 
 
-    def test_select_all_reservas(self, postgres: PostgresDB, mock_cursor: Mock):
+    def test_select_all_reservas(self, postgres: Postgres, mock_cursor: Mock):
         """Testa a recuperação de reservas em uma instância Postgres"""
         postgres._cursor = mock_cursor
         rows = postgres.select_all_reservas()
@@ -249,7 +245,7 @@ class TestPostgres:
         ("2"),
         ("3"),
     ])
-    def test_delete_reserva_by_id(self, postgres: PostgresDB, mock_cursor: Mock, mock_conn: Mock, reserva_id: str):
+    def test_delete_reserva_by_id(self, postgres: Postgres, mock_cursor: Mock, mock_conn: Mock, reserva_id: str):
         """Testa a deleção de um reserva em uma instância Postgres"""
         postgres._cursor = mock_cursor
         postgres._conn = mock_conn
@@ -269,7 +265,7 @@ class TestPostgres:
         ("2", "222.222.222-22", "José", "02/02/2022", [("Teste2", "12.00", "10", "2")],),
         ("3", "333.333.333-33", "Carlos", "03/03/2023", [("Teste3", "2.75", "3", "3")],),
     ])
-    def test_update_reserva(self, postgres: PostgresDB, mock_conn: Mock, mock_cursor: Mock, mock_reserva: Mock, reserva_id: int, cpf_cliente: str, nome_cliente: str, data_limite: datetime, medicamentos: list[Medicamento]):
+    def test_update_reserva(self, postgres: Postgres, mock_conn: Mock, mock_cursor: Mock, mock_reserva: Mock, reserva_id: int, cpf_cliente: str, nome_cliente: str, data_limite: datetime, medicamentos: list[Medicamento]):
         """Testa a atualização de reservas em uma instância Postgres"""
         reserva = mock_reserva(reserva_id, cpf_cliente, nome_cliente, data_limite, medicamentos)
         postgres._cursor = mock_cursor
@@ -307,7 +303,7 @@ class TestPostgres:
         mock_conn.commit.assert_called_once()
 
 
-    def test_disconnect(self, postgres: PostgresDB, mock_conn: Mock, mock_cursor: Mock):
+    def test_disconnect(self, postgres: Postgres, mock_conn: Mock, mock_cursor: Mock):
         """Testa a desconexão de uma instância Postgres"""
         postgres._cursor = mock_cursor
         postgres._conn = mock_conn
