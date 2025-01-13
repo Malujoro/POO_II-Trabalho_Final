@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="images">
+    <file>images/lixeira-de-reciclagem.png</file>
+    <file>images/compras.png</file>
     <file>images/001-caixa.png</file>
     <file>images/002-calendrio.png</file>
     <file>images/003-balo-de-fala.png</file>
