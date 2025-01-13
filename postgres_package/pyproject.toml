@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "postgresdb"
+version = "0.1.0"
+description = "Bibioteca com funções básicas para utilizar o Postgres"
+authors = ["Mateus"]
+readme = "README.md"
+packages = [
+    { include = "postgresdb", from = "src"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+psycopg2 = "^2.9.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
