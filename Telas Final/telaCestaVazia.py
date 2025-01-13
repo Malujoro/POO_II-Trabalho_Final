@@ -1,9 +1,9 @@
 from PyQt5 import uic
-from PyQt5.QtWidgets import QMainWindow, QApplication
+from PyQt5.QtWidgets import QMainWindow, QApplication, QDialog
 import sys
 import images_rc
 
-class TelaCesta(QMainWindow):
+class TelaCestaVazia(QDialog):
     
     def __init__(self):
 
@@ -12,6 +12,6 @@ class TelaCesta(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    tela = TelaCesta()
+    tela = TelaCestaVazia()
     tela.show()
     app.exec_()
