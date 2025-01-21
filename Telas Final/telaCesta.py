@@ -13,6 +13,8 @@ class TelaCesta(QMainWindow):
         super().__init__()
         uic.loadUi(os.path.join(current_dir, "ui/telaCesta.ui"), self)
 
+        
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     tela = TelaCesta()
