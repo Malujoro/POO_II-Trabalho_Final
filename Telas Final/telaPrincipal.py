@@ -16,12 +16,13 @@ class TelaPrincipal(QMainWindow):
         uic.loadUi(os.path.join(current_dir, 'ui/telaPrincipal.ui'), self)
 
         self.botao_cesta = self.findChild(QPushButton, "botaoCesta")  # Substitua pelo nome do botão no .ui
-        self.botao_cesta.clicked.connect(self.mostrar_cesta_vazia)
+        self.botao_cesta.clicked.connect(self.mostrar_cesta_vazia_tela)
 
         # ------ botões para adicionar ------
 
         # ainda sem utilidade para buscar
         self.botao_buscar = self.findChild(QPushButton, "botaoBuscar")
+        self.botao_buscar.clicked.connect(self.pesquisar_tela)
         
         # futura tela de reservas quando Áurea terminar 
         self.botao_reservar = self.findChild(QPushButton, "BotaoReservar")
@@ -37,9 +38,9 @@ class TelaPrincipal(QMainWindow):
 
         # teste para abrir a tela de cesta a partir do botão de adicionar
         self.botao_add_cesta = (self.findChild(QPushButton, "BotaoAddCesta"))
-        self.botao_add_cesta.clicked.connect(self.chamar_cesta)
+        self.botao_add_cesta.clicked.connect(self.chamar_cesta_tela)
         
-    def mostrar_cesta_vazia(self):
+    def mostrar_cesta_vazia_tela(self):
         self.nova_tela = TelaCestaVazia()  
         self.nova_tela.show()  
 
@@ -61,10 +62,14 @@ class TelaPrincipal(QMainWindow):
         # self.nova_tela = ...
         # self.nova_tela.show()
 
-    def chamar_cesta(self):
+    def chamar_cesta_tela(self):
         self.nova_tela = TelaCesta()
         self.nova_tela.show()
 
+    def pesquisar_tela(self):
+        # self.nova_tela = ...
+        # self.nova_tela.show()
+        pass
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
