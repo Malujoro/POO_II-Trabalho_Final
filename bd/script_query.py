@@ -8,7 +8,7 @@ if(__name__ == '__main__'):
     banco = Postgres()
 
     # medicamento = Medicamento(None, "Dipirona", 15.0, 5)
-    # medicamento = Medicamento(None, "Tadalafila", 22.0, 3)
+    # medicamento = Medicamento(None, "Benzetacil", 22.0, 3)
     # banco.insert_medicamento(medicamento)
     # print(banco.select_all_medicamentos())
 
@@ -29,4 +29,4 @@ if(__name__ == '__main__'):
     # reserva.cpf_cliente = "987654321-00"
     # banco.update_reserva(reserva)
 
-    banco.delete_reserva_by_id("13")
+    # banco.delete_reserva_by_id("13")
