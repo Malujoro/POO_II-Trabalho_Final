@@ -188,7 +188,7 @@ class Ui_MainWindow(object):
 "")
         self.BotaoReservar.setObjectName("BotaoReservar")
         self.horizontalLayout_2.addWidget(self.BotaoReservar)
-        self.botaoOfertas = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
+
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)
@@ -271,52 +271,7 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
         brush.setStyle(QtCore.Qt.NoBrush)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.PlaceholderText, brush)
-        self.botaoOfertas.setPalette(palette)
-        self.botaoOfertas.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.botaoOfertas.setMouseTracking(True)
-        self.botaoOfertas.setTabletTracking(True)
-        self.botaoOfertas.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.botaoOfertas.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
-        self.botaoOfertas.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.botaoOfertas.setStyleSheet("QPushButton{  \n"
-"background-color: rgb(0, 75, 63);\n"
-"font: 9pt \"Cooper Black\"; /* Fonte e tamanho */\n"
-"color: rgb(255, 255, 255); /* Cor do texto */\n"
-"text-align: left; /* Texto alinhado à esquerda */\n"
-"border-radius: 8px; /* Bordas arredondadas */\n"
-"padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */ \n"
-"image: url(:/images/images/002-calendrio.png); /* Caminho da imagem */\n"
-"image-position:right; /* Posiciona a imagem no centro da área disponível */\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"background-color: rgb(156, 180, 172);\n"
-"font: 9pt \"Cooper Black\"; /* Fonte e tamanho */\n"
-"color: rgb(255, 255, 255); /* Cor do texto */\n"
-"text-align: left; /* Texto alinhado à esquerda */\n"
-"border-radius: 8px; /* Bordas arredondadas */\n"
-"padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */ \n"
-"image: url(:/images/images/002-calendrio.png); /* Caminho da imagem */\n"
-"image-position:right; /* Posiciona a imagem no centro da área disponível */\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"background-color: rgb(156, 180, 172);\n"
-"font: 8pt \"Cooper Black\"; /* Fonte e tamanho */\n"
-"color: rgb(255, 255, 255); /* Cor do texto */\n"
-"text-align: left; /* Texto alinhado à esquerda */\n"
-"border-radius: 8px; /* Bordas arredondadas */\n"
-"padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */ \n"
-"image: url(:/images/images/002-calendrio.png); /* Caminho da imagem */\n"
-"image-position:right; /* Posiciona a imagem no centro da área disponível */\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.botaoOfertas.setCheckable(False)
-        self.botaoOfertas.setAutoDefault(False)
-        self.botaoOfertas.setObjectName("botaoOfertas")
-        self.horizontalLayout_2.addWidget(self.botaoOfertas)
+
         self.botaoChat = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
         self.botaoChat.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.botaoChat.setStyleSheet("QPushButton{  \n"
@@ -879,7 +834,7 @@ class Ui_MainWindow(object):
         self.botaoBuscar.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
         self.BotaoReservar.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
         self.BotaoReservar.setText(_translate("MainWindow", "Reserve seus produtos"))
-        self.botaoOfertas.setText(_translate("MainWindow", "Visualize nossas ofertas"))
+
         self.botaoChat.setText(_translate("MainWindow", "Converse com nosso CHAT"))
         self.label_6.setText(_translate("MainWindow", "- 15%"))
         self.label_5.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Vitamina C 1000mg</span></p></body></html>"))

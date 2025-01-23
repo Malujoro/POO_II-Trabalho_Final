@@ -113,7 +113,7 @@ class Ui_MainWindow(object):
         self.label_30.setGeometry(QtCore.QRect(10, 30, 301, 91))
         self.label_30.setObjectName("label_30")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget.setGeometry(QtCore.QRect(100, 200, 800, 500))  # 14cm x 8cm em pixels (1cm = 100 pixels)
+        self.tabWidget.setGeometry(QtCore.QRect(70, 140, 800, 480))  # 14cm x 8cm em pixels (1cm = 100 pixels)
         self.tabWidget.setObjectName("tabWidget")
         self.tabWidget.setStyleSheet("""
             QTableWidget {
@@ -142,7 +142,7 @@ class Ui_MainWindow(object):
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
         self.tableWidget = QtWidgets.QTableWidget(self.tab)
-        self.tableWidget.setGeometry(QtCore.QRect(50, 50, 700, 400))  # Tamanho proporcional e centralizado
+        self.tableWidget.setGeometry(QtCore.QRect(50, 30, 700, 400))  # Tamanho proporcional e centralizado
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(3)
         item = QtWidgets.QTableWidgetItem()
@@ -155,25 +155,72 @@ class Ui_MainWindow(object):
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
         self.tableWidget_2 = QtWidgets.QTableWidget(self.tab_2)
-        self.tableWidget_2.setGeometry(QtCore.QRect(50, 50, 700, 400))  # Tamanho proporcional e centralizado
+        self.tableWidget_2.setGeometry(QtCore.QRect(50, 30, 700, 400))  # Tamanho proporcional e centralizado
         self.tableWidget_2.setObjectName("tableWidget_2")
-        self.tableWidget_2.setColumnCount(2)
+        self.tableWidget_2.setColumnCount(4)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget_2.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget_2.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setHorizontalHeaderItem(3, item)
         self.tabWidget.addTab(self.tab_2, "")
 
         # Ajustando a largura das colunas
-        self.tableWidget.setColumnWidth(0, 390)  # Produto - maior largura
+        self.tableWidget.setColumnWidth(0, 429)  # Produto - maior largura
         self.tableWidget.setColumnWidth(1, 150)  # Valor - largura menor
         self.tableWidget.setColumnWidth(2, 100)  # Quantidade - largura menor
 
+        # Ajustando a largura das colunas
+        self.tableWidget_2.setColumnWidth(0, 180)  # nome - maior largura
+        self.tableWidget_2.setColumnWidth(1, 290)  # produtos - largura menor
+        self.tableWidget_2.setColumnWidth(2, 90)  # Valor - largura menor
+        self.tableWidget_2.setColumnWidth(3, 119)  # data/hora limite - largura menor
+
         # Adicionando funcionalidade de atualização
         self.updateButton = QtWidgets.QPushButton(self.centralwidget)
-        self.updateButton.setGeometry(QtCore.QRect(400, 600, 100, 30))
+        self.updateButton.setGeometry(QtCore.QRect(400, 625, 100, 30))
         self.updateButton.setObjectName("updateButton")
         self.updateButton.setText("Atualizar")
+        self.updateButton.setStyleSheet("QPushButton {  \n"
+                                    "    background-color: rgb(0, 75, 63);\n"
+                                    "    font: 75 7pt \"MS Shell Dlg 2\";\n"
+                                    "    color: rgb(255, 255, 255); /* Cor do texto */\n"
+                                    "    border-radius: 8px; /* Bordas arredondadas */\n"
+                                    "    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
+                                    "    text-align: center; /* Centraliza o texto */    \n"
+                                    "}\n"
+                                    "\n"
+                                    "QPushButton:hover{\n"
+                                    "  background-color: #E5E5E5;\n"
+                                    "    font: 75 7pt \"MS Shell Dlg 2\";\n"
+                                    "    color: rgb(255, 255, 255); /* Cor do texto */\n"
+                                    "    border-radius: 8px; /* Bordas arredondadas */\n"
+                                    "    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
+                                    "    text-align: center; /* Centraliza o texto */\n"
+                                    "border: 1px solid #CCCCCC;\n"
+                                    "box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */\n"
+                                    "}\n"
+                                    "QPushButton:pressed{\n"
+                                    "background-color: #E5E5E5;\n"
+                                    "    font: 75 7pt \"MS Shell Dlg 2\";\n"
+                                    "    color: rgb(255, 255, 255); /* Cor do texto */\n"
+                                    "    border-radius: 8px; /* Bordas arredondadas */\n"
+                                    "    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
+                                    "    text-align: center; /* Centraliza o texto */\n"
+                                    "border: 1px solid #CCCCCC;\n"
+                                    "box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */\n"
+                                    "background-color: #D6D6D6; /* Fundo mais escuro */\n"
+                                    "    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); /* Menor sombra */\n"
+                                    "    transform: translateY(2px); /* Deslocamento para baixo */\n"
+                                    "    border: 1px solid #AAAAAA; /* Borda mais escura */\n"
+                                    "}\n"
+                                    "\n"
+                                    "\n"
+                                    "")
+        self.updateButton.setObjectName("updateButton")
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
@@ -198,13 +245,17 @@ class Ui_MainWindow(object):
         # Adicionando linhas de exemplo na segunda aba
         row_position_2 = self.tableWidget_2.rowCount()
         self.tableWidget_2.insertRow(row_position_2)
-        self.tableWidget_2.setItem(row_position_2, 0, QtWidgets.QTableWidgetItem("Produto Exemplo"))
-        self.tableWidget_2.setItem(row_position_2, 1, QtWidgets.QTableWidgetItem("R$ 10,00"))
+        self.tableWidget_2.setItem(row_position_2, 0, QtWidgets.QTableWidgetItem("Gabriel"))
+        self.tableWidget_2.setItem(row_position_2, 1, QtWidgets.QTableWidgetItem("Viagra"))
+        self.tableWidget_2.setItem(row_position_2, 2, QtWidgets.QTableWidgetItem("R$100,00"))
+        self.tableWidget_2.setItem(row_position_2, 3, QtWidgets.QTableWidgetItem("24/01/2025"))
 
         row_position_2 = self.tableWidget_2.rowCount()
         self.tableWidget_2.insertRow(row_position_2)
-        self.tableWidget_2.setItem(row_position_2, 0, QtWidgets.QTableWidgetItem("Produto Exemplo 2"))
-        self.tableWidget_2.setItem(row_position_2, 1, QtWidgets.QTableWidgetItem("R$ 10,00"))
+        self.tableWidget_2.setItem(row_position_2, 0, QtWidgets.QTableWidgetItem("Gabriel"))
+        self.tableWidget_2.setItem(row_position_2, 1, QtWidgets.QTableWidgetItem("Viagra"))
+        self.tableWidget_2.setItem(row_position_2, 2, QtWidgets.QTableWidgetItem("R$100,00"))
+        self.tableWidget_2.setItem(row_position_2, 3, QtWidgets.QTableWidgetItem("24/01/2025"))
 
         row_position_2 = self.tableWidget_2.rowCount()
         self.tableWidget_2.insertRow(row_position_2)
@@ -234,7 +285,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_7.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600; color:#004b3f;\">GERENCIAR ESTOQUE E OFERTAS</span></p></body></html>"))
+        self.label_7.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600; color:#004b3f;\">GERENCIAR ESTOQUE E RESERVAS</span></p></body></html>"))
         self.btnNomelogo.setWhatsThis(
                 _translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
         self.btnNomelogo.setText(_translate("MainWindow", "DrogaLaugh"))
@@ -269,10 +320,14 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Quantidade"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Gerenciar Estoque"))
         item = self.tableWidget_2.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "Produto"))
+        item.setText(_translate("MainWindow", "Nome"))
         item = self.tableWidget_2.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "Valor"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Gerenciar Ofertas"))
+        item.setText(_translate("MainWindow", "Produtos"))
+        item = self.tableWidget_2.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "Valor Total"))
+        item = self.tableWidget_2.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "Data/hora limite"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Gerenciar Reservas"))
 import images_rc
 
 
