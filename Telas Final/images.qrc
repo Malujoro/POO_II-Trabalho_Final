@@ -1,6 +1,11 @@
 <RCC>
   <qresource prefix="images">
+    <file>images/contato.png</file>
+    <file>images/facebook.png</file>
+    <file>images/instagram.png</file>
+    <file>images/gerenciamento-de-projetos.png</file>
     <file>images/lixeira-de-reciclagem.png</file>
+    <file>images/seta-direita.png</file>
     <file>images/compras.png</file>
     <file>images/001-caixa.png</file>
     <file>images/002-calendrio.png</file>
