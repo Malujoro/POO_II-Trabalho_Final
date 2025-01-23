@@ -17,11 +17,27 @@ class Ui_MainWindow(object):
         MainWindow.resize(931, 840)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.logo = QtWidgets.QLabel(self.centralwidget)
-        self.logo.setGeometry(QtCore.QRect(10, 0, 61, 71))
-        self.logo.setStyleSheet("image:url(:/images/images/logofolha.png)")
-        self.logo.setText("")
-        self.logo.setObjectName("logo")
+        self.btnLogo = QtWidgets.QPushButton(self.centralwidget)
+        self.btnLogo.setGeometry(QtCore.QRect(10, 0, 71, 71))
+        self.btnLogo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnLogo.setStyleSheet("\n"
+                                   "QPushButton {  \n"
+                                   "    background-color: rgb(0, 75, 63);\n"
+                                   "   font: 15pt \"Cooper Black\";\n"
+                                   "    color: rgb(255, 255, 255); /* Cor do texto */\n"
+                                   "    border-radius: 8px; /* Bordas arredondadas */\n"
+                                   "    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
+                                   "image:url(:/images/images/logofolha.png)\n"
+                                   "    \n"
+                                   "       \n"
+                                   "}\n"
+                                   "\n"
+                                   "\n"
+                                   "\n"
+                                   "\n"
+                                   "")
+        self.btnLogo.setText("")
+        self.btnLogo.setObjectName("btnLogo")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(0, 0, 931, 71))
         self.label_2.setStyleSheet("background-color: rgb(0, 75, 63);\n"
@@ -43,37 +59,26 @@ class Ui_MainWindow(object):
 "")
         self.label_8.setText("")
         self.label_8.setObjectName("label_8")
-        self.nomeLogo = QtWidgets.QPushButton(self.centralwidget)
-        self.nomeLogo.setGeometry(QtCore.QRect(60, 10, 181, 51))
-        self.nomeLogo.setStyleSheet("\n"
-"QPushButton {  \n"
-"    background-color: rgb(0, 75, 63);\n"
-"   font: 15pt \"Cooper Black\";\n"
-"    color: rgb(255, 255, 255); /* Cor do texto */\n"
-"    border-radius: 8px; /* Bordas arredondadas */\n"
-"    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
-"    \n"
-"       \n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"background-color: rgb(0, 75, 63);\n"
-"   font: 15pt \"Cooper Black\";\n"
-"    color: rgb(255, 255, 255); /* Cor do texto */\n"
-"    border-radius: 8px; /* Bordas arredondadas */\n"
-"    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
-"   \n"
-"border: 1px solid #CCCCCC;\n"
-"box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */\n"
-"background-color: #D6D6D6; /* Fundo mais escuro */\n"
-"   \n"
-"    transform: translateY(2px); /* Deslocamento para baixo */\n"
-"   \n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.nomeLogo.setObjectName("nomeLogo")
+        self.btnNomelogo = QtWidgets.QPushButton(self.centralwidget)
+        self.btnNomelogo.setGeometry(QtCore.QRect(70, 10, 181, 51))
+        self.btnNomelogo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnNomelogo.setStyleSheet("\n"
+
+                                       "QPushButton {  \n"
+                                       "    background-color: rgb(0, 75, 63);\n"
+                                       "   font: 15pt \"Cooper Black\";\n"
+                                       "    color: rgb(255, 255, 255); /* Cor do texto */\n"
+                                       "    border-radius: 8px; /* Bordas arredondadas */\n"
+                                       "    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
+                                       "    \n"
+                                       "       \n"
+                                       "}\n"
+                                       "\n"
+                                       "\n"
+                                       "\n"
+                                       "\n"
+                                       "")
+        self.btnNomelogo.setObjectName("btnNomelogo")
         self.frame_5 = QtWidgets.QFrame(self.centralwidget)
         self.frame_5.setGeometry(QtCore.QRect(20, 680, 321, 131))
         self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -108,30 +113,38 @@ class Ui_MainWindow(object):
         self.label_30.setGeometry(QtCore.QRect(10, 30, 301, 91))
         self.label_30.setObjectName("label_30")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget.setGeometry(QtCore.QRect(86, 179, 761, 391))
+        self.tabWidget.setGeometry(QtCore.QRect(100, 200, 800, 500))  # 14cm x 8cm em pixels (1cm = 100 pixels)
         self.tabWidget.setObjectName("tabWidget")
         self.tabWidget.setStyleSheet("""
-                    QTableWidget {
-                        background-color: #f2f2f2;
-                        border: 1px solid #ddd;
-                        border-radius: 5px;
-                    }
-                    QTableWidget::item {
-                        padding: 10px;
-                    }
-                    QTableWidget::horizontalHeader {
-                        background-color: rgb(0, 75, 63);
-                        color: white;
-                        font: bold;
-                    }
-                """)
+            QTableWidget {
+                background-color: #e6ffe6;  # Fundo verde claro
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+            QTableWidget::item {
+                padding: 10px;
+            }
+            QTableWidget::horizontalHeader {
+                background-color: #004b3f;  # Verde escuro
+                color: white;
+                font: bold;
+            }
+            QTableWidget::item:selected {
+                background-color: #ccffcc;  # Fundo verde claro para item selecionado
+            }
+            QTableWidget::item:hover {
+                background-color: #b3ffb3;  # Fundo verde claro para item em foco
+            }
+            QTableWidget::gridline-color {
+                color: #004b3f;  # Verde escuro para linhas
+            }
+        """)
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
         self.tableWidget = QtWidgets.QTableWidget(self.tab)
-        self.tableWidget.setGeometry(QtCore.QRect(50, 40, 661, 271))
+        self.tableWidget.setGeometry(QtCore.QRect(50, 50, 700, 400))  # Tamanho proporcional e centralizado
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(3)
-        self.tableWidget.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -142,10 +155,9 @@ class Ui_MainWindow(object):
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
         self.tableWidget_2 = QtWidgets.QTableWidget(self.tab_2)
-        self.tableWidget_2.setGeometry(QtCore.QRect(50, 40, 661, 271))
+        self.tableWidget_2.setGeometry(QtCore.QRect(50, 50, 700, 400))  # Tamanho proporcional e centralizado
         self.tableWidget_2.setObjectName("tableWidget_2")
         self.tableWidget_2.setColumnCount(2)
-        self.tableWidget_2.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget_2.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -157,11 +169,53 @@ class Ui_MainWindow(object):
         self.tableWidget.setColumnWidth(1, 150)  # Valor - largura menor
         self.tableWidget.setColumnWidth(2, 100)  # Quantidade - largura menor
 
+        # Adicionando funcionalidade de atualização
+        self.updateButton = QtWidgets.QPushButton(self.centralwidget)
+        self.updateButton.setGeometry(QtCore.QRect(400, 600, 100, 30))
+        self.updateButton.setObjectName("updateButton")
+        self.updateButton.setText("Atualizar")
+
+        self.retranslateUi(MainWindow)
+        self.tabWidget.setCurrentIndex(0)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        # Adicionando linhas de exemplo na primeira aba
+        row_position = self.tableWidget.rowCount()
+        self.tableWidget.insertRow(row_position)
+        self.tableWidget.setItem(row_position, 0, QtWidgets.QTableWidgetItem("Produto Exemplo"))
+        self.tableWidget.setItem(row_position, 1, QtWidgets.QTableWidgetItem("R$ 10,00"))
+        self.tableWidget.setItem(row_position, 2, QtWidgets.QTableWidgetItem("100"))
+
+        row_position = self.tableWidget.rowCount()
+        self.tableWidget.insertRow(row_position)
+        self.tableWidget.setItem(row_position, 0, QtWidgets.QTableWidgetItem("Produto Exemplo 2"))
+        self.tableWidget.setItem(row_position, 1, QtWidgets.QTableWidgetItem("R$ 10,00"))
+        self.tableWidget.setItem(row_position, 2, QtWidgets.QTableWidgetItem("100"))
+
+        row_position = self.tableWidget.rowCount()
+        self.tableWidget.insertRow(row_position)
+
+        # Adicionando linhas de exemplo na segunda aba
+        row_position_2 = self.tableWidget_2.rowCount()
+        self.tableWidget_2.insertRow(row_position_2)
+        self.tableWidget_2.setItem(row_position_2, 0, QtWidgets.QTableWidgetItem("Produto Exemplo"))
+        self.tableWidget_2.setItem(row_position_2, 1, QtWidgets.QTableWidgetItem("R$ 10,00"))
+
+        row_position_2 = self.tableWidget_2.rowCount()
+        self.tableWidget_2.insertRow(row_position_2)
+        self.tableWidget_2.setItem(row_position_2, 0, QtWidgets.QTableWidgetItem("Produto Exemplo 2"))
+        self.tableWidget_2.setItem(row_position_2, 1, QtWidgets.QTableWidgetItem("R$ 10,00"))
+
+        row_position_2 = self.tableWidget_2.rowCount()
+        self.tableWidget_2.insertRow(row_position_2)
+
+
+
         self.label_8.raise_()
         self.label_2.raise_()
         self.label_7.raise_()
-        self.nomeLogo.raise_()
-        self.logo.raise_()
+        self.btnNomelogo.raise_()
+        self.btnLogo.raise_()
         self.frame_5.raise_()
         self.frame_6.raise_()
         self.frame_7.raise_()
@@ -173,25 +227,7 @@ class Ui_MainWindow(object):
 
 
 
-        self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        row_position = self.tableWidget.rowCount()
-        self.tableWidget.insertRow(row_position)
-
-        # Adiciona itens nas colunas dessa linha
-
-        self.tableWidget.setItem(row_position, 0, QtWidgets.QTableWidgetItem("Produto Exemplo"))
-        self.tableWidget.setItem(row_position, 1, QtWidgets.QTableWidgetItem("R$ 10,00"))
-        self.tableWidget.setItem(row_position, 2, QtWidgets.QTableWidgetItem("100"))
-
-        row_position = self.tableWidget.rowCount()
-        self.tableWidget.insertRow(row_position)
-        # Adiciona itens nas colunas dessa linha
-        self.tableWidget.setItem(row_position, 0, QtWidgets.QTableWidgetItem("Produto Exemplo 2"))
-        self.tableWidget.setItem(row_position, 1, QtWidgets.QTableWidgetItem("R$ 10,00"))
-        self.tableWidget.setItem(row_position, 2, QtWidgets.QTableWidgetItem("100"))
 
 
 
@@ -199,8 +235,9 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_7.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600; color:#004b3f;\">GERENCIAR ESTOQUE E OFERTAS</span></p></body></html>"))
-        self.nomeLogo.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
-        self.nomeLogo.setText(_translate("MainWindow", "DrogaLaugh"))
+        self.btnNomelogo.setWhatsThis(
+                _translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
+        self.btnNomelogo.setText(_translate("MainWindow", "DrogaLaugh"))
         self.label_25.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:9pt; font-weight:600; color:#ffffff;\">Sobre Nós</span></p></body></html>"))
         self.label_26.setText(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
