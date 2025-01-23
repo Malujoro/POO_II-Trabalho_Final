@@ -1,4 +1,4 @@
-HOST = '10.147.20.101'  # localhost
+HOST = '127.0.0.1'  # localhost
 PORT = 7001
 ADDR = (HOST, PORT)
 NOME_ADMIN = "funcionario"

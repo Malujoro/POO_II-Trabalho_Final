@@ -29,7 +29,7 @@ class TestUserAdmin:
         return User("Funcionario")
     
     def test_constructor_admin(self, admin: User):
-        """Testa a alteração do nome de uma instância User admin"""
+        """Testa o construtor de uma instância User admin"""
         assert admin.nome == "Funcionario"
         assert admin.timeout == 0
         assert admin.endereco == ADDR
