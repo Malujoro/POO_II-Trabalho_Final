@@ -190,7 +190,16 @@ class Ui_MainWindow(object):
         self.label_6.setText(_translate("MainWindow", "____________________________________________"))
 
 import images_rc
+import os 
 
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+class TelaCesta(QMainWindow):
+    
+    def __init__(self):
+
+        super().__init__()
+        uic.loadUi("Telas Final/telaCesta.ui", self)
 
 if __name__ == "__main__":
     import sys

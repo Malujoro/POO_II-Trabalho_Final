@@ -3,7 +3,8 @@ from postgresdb import PostgresDB
 """
 Importação:
 
-1. Importa a biblioteca do PostgreSQL.
+1. Importa a classe medicamentos
+2. Importa a biblioteca do PostgreSQL.
 """
 
 
@@ -11,8 +12,8 @@ class Postgres(PostgresDB):
     """
     Classe Postgres:
 
-    Gerenciar as operações do banco de dados Postgres.
-    Permite conectar, inserir mensagem e desconectar.
+    Gerencia as operações do banco de dados Postgres.
+    Permite conectar, criar tabelas, inserir, atualizar, selecionar e remover dados relacionados a medicamentos e reservas.
     """
 
     def __init__(self, dbname: str = 'mydatabase', user: str = 'user', password: str = 'password', host: str = 'localhost', port: str = '5410') -> None:
@@ -32,7 +33,6 @@ class Postgres(PostgresDB):
 
         conn: atributo que contém a conexão do banco (inicializado com None);
         cursor: atributo que contém o cursor do banco (inicializado com None);
-        connect: a conexão com o banco de dados é estabelecida.
         """
         super().__init__(dbname, user, password, host, port)
         self.create_all_tables()
@@ -41,19 +41,22 @@ class Postgres(PostgresDB):
         """
         Método create_all_tables:
 
-        Cria a tabela com as colunas: id, role, message e date.
-        O comando 'self._conn.commit()' é usado para salvar as alterações.
+        Cria as tabelas:
+        - medicamento (id, nome, preco, quantidade_estoque)
+        - reservas (id, cpf_cliente, nome_cliente, data_limite)
+        - reserva_medicamentos (reserva_id, medicamento_id, quantidade)
         """
+
         # Tabela de reservas, relacionamento reserva_medicamento
         self.create_table([
-                """
+            """
                 CREATE TABLE IF NOT EXISTS medicamento (
                 medicamento_id INT PRIMARY KEY AUTO_INCREMENT, 
                 nome VARCHAR(255) NOT NULL, preco DECIMAL(10, 2), 
                 quantidade_estoque INT
                 )
                 """,
-                """
+            """
                 CREATE TABLE IF NOT EXISTS reservas (
                     reserva_id INT PRIMARY KEY AUTO_INCREMENT,
                     cpf_cliente VARCHAR(14) NOT NULL,
@@ -61,7 +64,7 @@ class Postgres(PostgresDB):
                     data_limite DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
                 """,
-                """
+            """
                 CREATE TABLE IF NOT EXISTS reserva_medicamentos (
                     reserva_id INT NOT NULL,
                     medicamento_id INT NOT NULL,
@@ -77,52 +80,64 @@ class Postgres(PostgresDB):
         """
         Método insert:
 
+        Insere um medicamento na tabela.
+
         Parâmetro:
-        dado (lista[tupla[str, str]]): uma lista de tuplas, na qual cada uma contém dois elementos do tipo string.
-            - O primeiro elemento corresponde ao nome de quem enviou a mensagem
-            - O segundo elemento corresponde a mensagem que foi enviada
+        medicamento (Medicamento): Objeto contendo os dados do medicamento.
 
         Verifica se a lista não está vazia.
         Se não, o comando 'executemany' insere multiplas linhas de uma vez só (as duas strings passadas em cada tupla da lista).
         O comando 'self._conn.commit()' é usado para salvar as alterações.
         """
         if (medicamento):
-            self._cursor.executemany("""INSERT INTO medicamento (nome, preco, quantidade_estoque) VALUES (%s, %s, %s)""", (medicamento.nome, medicamento.preco, medicamento.quantidade_estoque))
+            self._cursor.executemany("""INSERT INTO medicamento (nome, preco, quantidade_estoque) VALUES (%s, %s, %s)""", (
+                medicamento.nome, medicamento.preco, medicamento.quantidade_estoque))
             self._conn.commit()
 
     def select_all_medicamentos(self):
         """
-        Método select_all:
-        
+        Método select_all_medicamentos:
+
+        Retorna todos os medicamentos cadastrados na tabela.
+
         O comando executado 'SELECT * FROM medicamento' seleciona todas as linhas da tabela medicamento.
         Esta função retorna todas as linhas resultantes como uma lista de tuplas.
         """
-        return self.select_all("medicamento")  
+        return self.select_all("medicamento")
 
-    def delete_medicamento_by_id(self, id:str ) -> None:
+    def delete_medicamento_by_id(self, id: str) -> None:
         """
-        Método delete:
+         Método delete_medicamento_by_id:
+
+        Remove um medicamento pelo ID.
+
+        Parâmetro:
+        id (int): ID do medicamento a ser removido.
         """
         if (id):
-            self._cursor.executemany("""DELETE FROM medicamento WHERE medicamento_id = %s;""", id)
+            self._cursor.executemany(
+                """DELETE FROM medicamento WHERE medicamento_id = %s;""", id)
             self._conn.commit()
 
     def update_medicamento(self, medicamento: Medicamento) -> None:
         """
-        Método delete:
-        """
+        Método update_medicamento:
+
+        Atualiza os dados de um medicamento na tabela.
+
+        Parâmetro:
+        medicamento (Medicamento): Objeto contendo os dados atualizados.
+                """
         if (medicamento):
-            self._cursor.executemany("""UPDATE medicamento SET nome = %s, preco = %s, quantidade_estoque = %s WHERE medicamento_id = %s;""", (medicamento.nome, medicamento.preco, medicamento.quantidade_estoque, medicamento.medicamento_id))
+            self._cursor.executemany("""UPDATE medicamento SET nome = %s, preco = %s, quantidade_estoque = %s WHERE medicamento_id = %s;""", (
+                medicamento.nome, medicamento.preco, medicamento.quantidade_estoque, medicamento.medicamento_id))
             self._conn.commit()
 
     def insert_reserva(self, reserva):
         """
         Método insert_reserva:
 
-        Parâmetro:
-        reserva (Reserva): um objeto contendo os dados da reserva.
-
-        Insere uma nova reserva na tabela 'reservas' e vincula os medicamentos reservados na tabela 'reserva_medicamentos'.
+        Insere uma reserva na tabela e vincula os medicamentos reservados.
         """
         if reserva:
             # Inserir na tabela reservas
@@ -167,9 +182,13 @@ class Postgres(PostgresDB):
 
     def delete_reserva_by_id(self, reserva_id: int) -> None:
         """
-        Método delete_reserva_by_id:
+       Método delete_reserva_by_id:
 
-        Remove uma reserva e seus medicamentos associados pelo ID da reserva.
+        Parâmetro:
+        reserva_id (int): identificador único da reserva a ser removida.
+
+        Remove uma reserva da tabela 'reservas' e seus medicamentos associados na tabela 'reserva_medicamentos'.
+        O comando 'self._conn.commit()' é usado para salvar as alterações.
         """
         if reserva_id:
             self._cursor.execute(
@@ -184,7 +203,10 @@ class Postgres(PostgresDB):
         """
         Método update_reserva:
 
-        Atualiza os dados de uma reserva e os medicamentos associados.
+        Parâmetro:
+        reserva (Reserva): objeto contendo os dados atualizados da reserva.
+
+        Atualiza os dados de uma reserva na tabela 'reservas' e os medicamentos associados na tabela 'reserva_medicamentos'.
         """
         if reserva:
             # Atualizar dados da reserva
@@ -192,7 +214,8 @@ class Postgres(PostgresDB):
                 """
                 UPDATE reservas SET cpf_cliente = %s, nome_cliente = %s, data_limite = %s WHERE reserva_id = %s
                 """,
-                (reserva.cpf_cliente, reserva.nome_cliente, reserva.data_limite, reserva.reserva_id)
+                (reserva.cpf_cliente, reserva.nome_cliente,
+                 reserva.data_limite, reserva.reserva_id)
             )
 
             # Remover medicamentos antigos
