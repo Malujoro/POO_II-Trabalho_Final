@@ -1,61 +1,39 @@
 class Medicamento:
-    """
-    Classe Medicamento:
-
-    Representa um medicamento, armazenando seu identificador, nome, preço e quantidade em estoque.
-    """
-
     def __init__(self, medicamento_id, nome, preco, quantidade_estoque):
-        """
-        Construtor da classe Medicamento.
+        self._medicamento_id = medicamento_id  
+        self._nome = nome  
+        self._preco = preco  
+        self._quantidade_estoque = quantidade_estoque 
 
-        -> Parâmetros:
-        medicamento_id (int): Identificador único do medicamento.
-        nome (str): Nome do medicamento.
-        preco (float): Preço unitário do medicamento.
-        quantidade_estoque (int): Quantidade disponível no estoque.
-        """
-        self._medicamento_id = medicamento_id
-        self._nome = nome
-        self._preco = preco
-        self._quantidade_estoque = quantidade_estoque
-
+    
     @property
-    def medicamento_id(self) -> int:
-        """Retorna o identificador único do medicamento."""
+    def medicamento_id(self):
         return self._medicamento_id
 
     @medicamento_id.setter
-    def medicamento_id(self, medicamento_id: int) -> None:
-        """Define o identificador único do medicamento."""
+    def medicamento_id(self, medicamento_id):
         self._medicamento_id = medicamento_id
 
     @property
-    def nome(self) -> str:
-        """Retorna o nome do medicamento."""
+    def nome(self):
         return self._nome
 
     @nome.setter
-    def nome(self, nome: str) -> None:
-        """Define o nome do medicamento."""
+    def nome(self, nome):
         self._nome = nome
 
     @property
-    def preco(self) -> float:
-        """Retorna o preço do medicamento."""
+    def preco(self):
         return self._preco
 
     @preco.setter
-    def preco(self, preco: float) -> None:
-        """Define o preço do medicamento."""
+    def preco(self, preco):
         self._preco = preco
 
     @property
-    def quantidade_estoque(self) -> int:
-        """Retorna a quantidade em estoque do medicamento."""
+    def quantidade_estoque(self):
         return self._quantidade_estoque
 
     @quantidade_estoque.setter
-    def quantidade_estoque(self, quantidade_estoque: int) -> None:
-        """Define a quantidade em estoque do medicamento."""
+    def quantidade_estoque(self, quantidade_estoque):
         self._quantidade_estoque = quantidade_estoque
