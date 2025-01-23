@@ -26,10 +26,10 @@ class TestPostgres:
         """Fixture que cria um Mock para simular o objeto cursor"""
         mock_cursor = Mock()
         mock_cursor.execute.return_value = None
-        mock_cursor.executemany.return_value = None
+        mock_cursor.execute.return_value = None
         mock_cursor.fetchall.return_value = [(None, None)]
         mock_cursor.close.return_value = None
-        mock_cursor.lastrowid.return_value = None
+        mock_cursor.fetchone.return_value = [None]
         return mock_cursor
 
     @pytest.fixture
@@ -96,17 +96,17 @@ class TestPostgres:
         args = [
                 """
                 CREATE TABLE IF NOT EXISTS medicamento (
-                medicamento_id INT PRIMARY KEY AUTO_INCREMENT, 
+                medicamento_id SERIAL PRIMARY KEY, 
                 nome VARCHAR(255) NOT NULL, preco DECIMAL(10, 2), 
                 quantidade_estoque INT
                 )
                 """,
                 """
                 CREATE TABLE IF NOT EXISTS reservas (
-                    reserva_id INT PRIMARY KEY AUTO_INCREMENT,
+                    reserva_id SERIAL PRIMARY KEY,
                     cpf_cliente VARCHAR(14) NOT NULL,
                     nome_cliente VARCHAR(255) NOT NULL,
-                    data_limite DATETIME DEFAULT CURRENT_TIMESTAMP
+                    data_limite TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )
                 """,
                 """
@@ -140,7 +140,7 @@ class TestPostgres:
         postgres._conn = mock_conn
         postgres.insert_medicamento(medicamento)
 
-        mock_cursor.executemany.assert_called_with("""INSERT INTO medicamento (nome, preco, quantidade_estoque) VALUES (%s, %s, %s)""", (medicamento.nome, medicamento.preco, medicamento.quantidade_estoque))
+        mock_cursor.execute.assert_called_with("""INSERT INTO medicamento (nome, preco, quantidade_estoque) VALUES (%s, %s, %s)""", (medicamento.nome, medicamento.preco, medicamento.quantidade_estoque))
         mock_conn.commit.assert_called_once()
 
 
@@ -165,7 +165,7 @@ class TestPostgres:
         postgres._conn = mock_conn
         postgres.delete_medicamento_by_id(id)
 
-        mock_cursor.executemany.assert_called_with("""DELETE FROM medicamento WHERE medicamento_id = %s;""", id)
+        mock_cursor.execute.assert_called_with("""DELETE FROM medicamento WHERE medicamento_id = %s;""", id)
         mock_conn.commit.assert_called_once()
 
 
@@ -181,7 +181,7 @@ class TestPostgres:
         postgres._conn = mock_conn
         postgres.update_medicamento(medicamento)
 
-        mock_cursor.executemany.assert_called_with("""UPDATE medicamento SET nome = %s, preco = %s, quantidade_estoque = %s WHERE medicamento_id = %s;""", (medicamento.nome, medicamento.preco, medicamento.quantidade_estoque, medicamento.medicamento_id))
+        mock_cursor.execute.assert_called_with("""UPDATE medicamento SET nome = %s, preco = %s, quantidade_estoque = %s WHERE medicamento_id = %s;""", (medicamento.nome, medicamento.preco, medicamento.quantidade_estoque, medicamento.medicamento_id))
         mock_conn.commit.assert_called_once()
 
 
@@ -200,15 +200,15 @@ class TestPostgres:
 
         mock_cursor.execute.assert_called_with(
                 """
-                INSERT INTO reservas (cpf_cliente, nome_cliente, data_limite) VALUES (%s, %s, %s)
+                INSERT INTO reservas (cpf_cliente, nome_cliente, data_limite) VALUES (%s, %s, %s) RETURNING reserva_id
                 """,
                 (reserva.cpf_cliente, reserva.nome_cliente, reserva.data_limite)
             )
         
-        reserva_id = mock_cursor.lastrowid
+        reserva_id = mock_cursor.fetchone()[0]
 
         reserva_medicamentos = [
-            (reserva_id, medicamento.medicamento_id, medicamento.quantidade)
+            (reserva_id, medicamento.medicamento_id, medicamento.quantidade_estoque)
             for medicamento in reserva.medicamentos
         ]
 
@@ -290,7 +290,7 @@ class TestPostgres:
         mock_cursor.assert_has_calls(chamadas, any_order=False)
 
         reserva_medicamentos = [
-            (reserva_id, medicamento.medicamento_id, medicamento.quantidade)
+            (reserva_id, medicamento.medicamento_id, medicamento.quantidade_estoque)
             for medicamento in reserva.medicamentos
         ]
 
