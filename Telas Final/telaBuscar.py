@@ -6,16 +6,13 @@ import os
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-
-class TelaGerenciar(QMainWindow):
+class TelaBuscar(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi(os.path.join(current_dir, "ui/telaGerenciar.ui"), self)
-
+        uic.loadUi(os.path.join(current_dir, "ui/telaBuscar.ui"), self)
 
 if __name__ == "__main__":
-    import sys
     app = QApplication(sys.argv)
-    tela = TelaGerenciar()    
+    tela = TelaBuscar()    
     tela.show()
     app.exec_()
