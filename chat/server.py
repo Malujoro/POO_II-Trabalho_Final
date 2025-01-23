@@ -46,7 +46,7 @@ class ChatServer:
         
         while True:
             try:
-                client_socket, addr = self.server_socket.accept()
+                client_socket, _ = self.server_socket.accept()
                 nome_usuario = client_socket.recv(BUFFER_SIZE).decode()
 
                 with self.lock:
@@ -70,6 +70,7 @@ class ChatServer:
                         
                         self.usuarios[nome_usuario] = client_socket
                         print(f"Cliente {nome_usuario} conectado")
+                        self.funcionario_socket.send(f"Cliente {nome_usuario} conectado".encode())
 
                 # Cria thread para lidar com as mensagens
                 thread = threading.Thread(

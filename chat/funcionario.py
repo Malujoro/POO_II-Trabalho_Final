@@ -69,7 +69,7 @@ class FuncionarioWindow(QMainWindow):
     def exibir_mensagem(self, mensagem):
         self.chat_display.append(mensagem)
         # Atualizar label de cliente se necessário
-        if "conectou" in mensagem:
+        if "conectado" in mensagem:
             self.cliente_label.setText(mensagem.split()[0])
 
     def closeEvent(self, event):
