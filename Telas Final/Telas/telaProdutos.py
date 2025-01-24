@@ -381,7 +381,7 @@ class TelaProdutosUi(object):
 
         self.botaoCesta.setWhatsThis(_translate("MainWindow", "<html><head/><body><p\n"
 "                        align=\"right\"><br/></p></body></html>"))
-        self.botaoCesta.setText(_translate("MainWindow", "R$0,00"))
+        # self.botaoCesta.setText(_translate("MainWindow", "R$0,00"))
         self.label_25.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:9pt; font-weight:600; color:#ffffff;\">Sobre Nós</span></p></body></html>"))
         self.label_26.setText(_translate("MainWindow",
                                          "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
