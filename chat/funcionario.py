@@ -2,7 +2,7 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTextEdit, QLineEdit, QPushButton, QVBoxLayout, QWidget, QLabel
 from PyQt5.QtCore import QThread, pyqtSignal
 from user_class import User
-from variaveis import NOME_ADMIN, ADDR
+from variaveis import NOME_ADMIN
 
 class ListenerThread(QThread):
     message_received = pyqtSignal(str)
@@ -34,6 +34,8 @@ class FuncionarioWindow(QMainWindow):
 
         # Input de mensagem
         self.message_input = QLineEdit()
+        self.message_input.setPlaceholderText("Digite sua mensagem")
+        self.message_input.returnPressed.connect(self.enviar_mensagem)
         layout.addWidget(self.message_input)
 
         # Botão de enviar
@@ -69,6 +71,7 @@ class FuncionarioWindow(QMainWindow):
     def exibir_mensagem(self, mensagem):
         self.chat_display.append(mensagem)
         # Atualizar label de cliente se necessário
+        
         if "conectado" in mensagem:
             self.cliente_label.setText(mensagem.split()[0])
 

@@ -1,7 +1,8 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton
 import sys
-import images_rc
+from Telas.telaPrincipal import TelaPrincipalUi
+import Telas.images_rc
 import os 
 
 current_dir = os.path.dirname(os.path.abspath(__file__))

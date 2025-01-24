@@ -1,36 +1,20 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton
 import sys
-import images_rc
+from Telas.telaCesta import TelaCestaUi
+import Telas.images_rc
 import os 
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-class TelaCesta(QMainWindow):
+class TelaCesta(TelaCestaUi):
     
-    def __init__(self):
-
-        super().__init__()
-        uic.loadUi(os.path.join(current_dir, "ui/telaCesta.ui"), self)
-
-        # ainda não sei oq esses botões vão fazer 
-        self.botao_cesta = self.findChild(QPushButton, "botaoCesta")
-
-        self.botao_cesta2 = self.findChild(QPushButton, "botaoCesta_2")
-        self.botao_cesta2.clicked.connect(self.excluir_remedio)
-
-
-    def excluir_remedio(self):
-        print("a")
-
-    def func_botao_cesta2(self):
-        # self.nova_tela = ...
-        # self.nova_tela.show()
-        pass
-
+    def __init__(self, mainWindow):
+        super().setupUi(mainWindow)
+        mainWindow.show()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    tela = TelaCesta()
-    tela.show()
+    MainWindow = QMainWindow()
+    tela = TelaCesta(MainWindow)
     app.exec_()

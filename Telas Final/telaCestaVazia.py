@@ -1,27 +1,20 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton  # Changed QDialog to QMainWindow
-from telaOfertas import TelaOfertas
 import sys
-import images_rc
+from Telas.telaCestaVazia import TelaCestaVaziaUi
+import Telas.images_rc
 import os 
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-class TelaCestaVazia(QMainWindow):  
+class TelaCestaVazia(TelaCestaVaziaUi):  
 
-    def __init__(self):
-        super().__init__()
-        uic.loadUi(os.path.join(current_dir, "ui/telaCestaVazia.ui"), self)
-
-        self.botao_ofertas = self.findChild(QPushButton, "botaoIrparaOfertas")
-        self.botao_ofertas.clicked.connect(self.ofertas_tela)
-
-    def ofertas_tela(self):
-        self.nova_tela = TelaOfertas()
-        self.nova_tela.show()
+    def __init__(self, mainWindow):
+        super().setupUi(mainWindow)
+        mainWindow.show()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    tela = TelaCestaVazia()
-    tela.show()
+    MainWindow = QMainWindow()
+    tela = TelaCestaVazia(MainWindow)
     app.exec_()
