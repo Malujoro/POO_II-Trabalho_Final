@@ -46,7 +46,7 @@ class TelaCestaVaziaUi(object):
         self.label_2.setStyleSheet("font: 10pt \"MS Shell Dlg 2\";")
         self.label_2.setObjectName("label_2")
         self.botaoIrparaOfertas = QtWidgets.QPushButton(self.frame_8)
-        self.botaoIrparaOfertas.setGeometry(QtCore.QRect(100, 500, 151, 38))
+        self.botaoIrparaOfertas.setGeometry(QtCore.QRect(110, 500, 129, 38))
         self.botaoIrparaOfertas.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.botaoIrparaOfertas.setStyleSheet("QPushButton {  \n"
 "    background-color: rgb(0, 75, 63);\n"
