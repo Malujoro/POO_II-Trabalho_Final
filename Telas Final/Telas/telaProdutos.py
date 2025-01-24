@@ -105,6 +105,7 @@ class Ui_MainWindow(object):
                                        "")
         self.btnNomelogo.setObjectName("btnNomelogo")
         self.botaoBuscar = QtWidgets.QPushButton(self.centralwidget)
+        self.botaoBuscar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.botaoBuscar.setGeometry(QtCore.QRect(690, 90, 41, 41))
         self.botaoBuscar.setStyleSheet("QPushButton {\n"
 "                        background-color: rgb(0, 75, 63);\n"
@@ -176,6 +177,7 @@ class Ui_MainWindow(object):
 "                            text-decoration: line-through;")
         self.label_10.setObjectName("label_10")
         self.BotaoAddCesta = QtWidgets.QPushButton(self.frame)
+        self.BotaoAddCesta.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.BotaoAddCesta.setGeometry(QtCore.QRect(30, 180, 101, 31))
         self.BotaoAddCesta.setStyleSheet("QPushButton {\n"
 "                            background-color: rgb(0, 75, 63);\n"
@@ -247,6 +249,7 @@ class Ui_MainWindow(object):
 "                            text-decoration: line-through;")
         self.label_14.setObjectName("label_14")
         self.BotaoAddCesta_2 = QtWidgets.QPushButton(self.frame_2)
+        self.BotaoAddCesta_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.BotaoAddCesta_2.setGeometry(QtCore.QRect(30, 180, 101, 31))
         self.BotaoAddCesta_2.setStyleSheet("QPushButton {\n"
 "                            background-color: rgb(0, 75, 63);\n"
@@ -304,7 +307,8 @@ class Ui_MainWindow(object):
         self.label_13.raise_()
         self.label_14.raise_()
         self.botaoCesta = QtWidgets.QPushButton(self.centralwidget)
-        self.botaoCesta.setGeometry(QtCore.QRect(818, 20, 91, 38))
+        self.botaoCesta.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.botaoCesta.setGeometry(QtCore.QRect(670, 20, 91, 38))
         self.botaoCesta.setStyleSheet("QPushButton {\n"
 "                        background-color: rgb(0, 75, 63);\n"
 "                        font: 75 9pt \"MS Shell Dlg 2\";\n"
@@ -405,7 +409,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Produtos"))
         self.LineBuscar.setToolTip(_translate("MainWindow", "<html><head/><body><p><img\n"
 "                        src=\":/images/images/lupa.png\"/></p></body></html>"))
         self.LineBuscar.setWhatsThis(_translate("MainWindow", "<html><head/><body><p><img\n"
@@ -485,17 +489,19 @@ class Ui_MainWindow(object):
         self.label_29.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:9pt;\n"
 "                            font-weight:600; color:#ffffff;\">Redes\n"
 "                            Sociais</span></p></body></html>"))
-        self.label_30.setText(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\"\n"
-"                            \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"                            <html><head><meta name=\"qrichtext\" content=\"1\"\n"
-"                            /><style type=\"text/css\">\n"
-"                            p, li { white-space: pre-wrap; }\n"
-"                            </style></head><body style=\" font-family:\'MS Shell Dlg 2\';\n"
-"                            font-size:8pt; font-weight:400; font-style:normal;\">\n"
-"                            <p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px;\n"
-"                            -qt-block-indent:0; text-indent:0px;\"><span style=\"\n"
-"                            color:#ffffff;\">Instagram<br\n"
-"                            />Facebook</span></p></body></html>"))
+        self.label_30.setText(_translate(
+                "MainWindow",
+                "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                "p { white-space: nowrap; margin: 5px 0; display: flex; align-items: center; }\n"
+                "img { margin-right: 8px; vertical-align: center; }\n"
+                "span { font-size: 12px; color: #ffffff; }\n"
+                "</style></head>\n"
+                "<body style=\" font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
+                "<p><img src=\":/images/images/instagram.png\" height=\"16\" width=\"16\" /><span> @droga_laugh</span></p>\n"
+                "<p><img src=\":/images/images/facebook.png\" height=\"16\" width=\"16\" /><span> Droga Laugh</span></p>\n"
+                "</body></html>"
+        ))
 import images_rc
 
 
