@@ -17,11 +17,27 @@ class Ui_MainWindow(object):
         MainWindow.resize(931, 840)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.logo = QtWidgets.QLabel(self.centralwidget)
-        self.logo.setGeometry(QtCore.QRect(10, 0, 61, 71))
-        self.logo.setStyleSheet("image:url(:/images/images/logofolha.png)")
-        self.logo.setText("")
-        self.logo.setObjectName("logo")
+        self.btnLogo = QtWidgets.QPushButton(self.centralwidget)
+        self.btnLogo.setGeometry(QtCore.QRect(10, 0, 71, 71))
+        self.btnLogo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnLogo.setStyleSheet("\n"
+                                   "QPushButton {  \n"
+                                   "    background-color: rgb(0, 75, 63);\n"
+                                   "   font: 15pt \"Cooper Black\";\n"
+                                   "    color: rgb(255, 255, 255); /* Cor do texto */\n"
+                                   "    border-radius: 8px; /* Bordas arredondadas */\n"
+                                   "    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
+                                   "image:url(:/images/images/logofolha.png)\n"
+                                   "    \n"
+                                   "       \n"
+                                   "}\n"
+                                   "\n"
+                                   "\n"
+                                   "\n"
+                                   "\n"
+                                   "")
+        self.btnLogo.setText("")
+        self.btnLogo.setObjectName("btnLogo")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(0, 0, 931, 71))
         self.label_2.setStyleSheet("background-color: rgb(0, 75, 63);\n"
@@ -78,38 +94,28 @@ class Ui_MainWindow(object):
         self.labelFrase.setStyleSheet("font: 75 8pt \"MS Shell Dlg 2\";\n"
 "color:#6E7683;")
         self.labelFrase.setObjectName("labelFrase")
-        self.nomeLogo = QtWidgets.QPushButton(self.centralwidget)
-        self.nomeLogo.setGeometry(QtCore.QRect(60, 10, 181, 51))
-        self.nomeLogo.setStyleSheet("\n"
-"QPushButton {  \n"
-"    background-color: rgb(0, 75, 63);\n"
-"   font: 15pt \"Cooper Black\";\n"
-"    color: rgb(255, 255, 255); /* Cor do texto */\n"
-"    border-radius: 8px; /* Bordas arredondadas */\n"
-"    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
-"    \n"
-"       \n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"background-color: rgb(0, 75, 63);\n"
-"   font: 15pt \"Cooper Black\";\n"
-"    color: rgb(255, 255, 255); /* Cor do texto */\n"
-"    border-radius: 8px; /* Bordas arredondadas */\n"
-"    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
-"   \n"
-"border: 1px solid #CCCCCC;\n"
-"box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */\n"
-"background-color: #D6D6D6; /* Fundo mais escuro */\n"
-"   \n"
-"    transform: translateY(2px); /* Deslocamento para baixo */\n"
-"   \n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.nomeLogo.setObjectName("nomeLogo")
+        self.btnNomelogo = QtWidgets.QPushButton(self.centralwidget)
+        self.btnNomelogo.setGeometry(QtCore.QRect(70, 10, 181, 51))
+        self.btnNomelogo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnNomelogo.setStyleSheet("\n"
+
+                                       "QPushButton {  \n"
+                                       "    background-color: rgb(0, 75, 63);\n"
+                                       "   font: 15pt \"Cooper Black\";\n"
+                                       "    color: rgb(255, 255, 255); /* Cor do texto */\n"
+                                       "    border-radius: 8px; /* Bordas arredondadas */\n"
+                                       "    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
+                                       "    \n"
+                                       "       \n"
+                                       "}\n"
+                                       "\n"
+                                       "\n"
+                                       "\n"
+                                       "\n"
+                                       "")
+        self.btnNomelogo.setObjectName("btnNomelogo")
         self.botaoBuscar = QtWidgets.QPushButton(self.centralwidget)
+        self.botaoBuscar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.botaoBuscar.setGeometry(QtCore.QRect(690, 240, 41, 41))
         self.botaoBuscar.setStyleSheet("QPushButton {  \n"
 "    background-color: rgb(0, 75, 63);\n"
@@ -182,6 +188,7 @@ class Ui_MainWindow(object):
         self.label_10.setObjectName("label_10")
         self.BotaoAddCesta = QtWidgets.QPushButton(self.frame)
         self.BotaoAddCesta.setGeometry(QtCore.QRect(30, 180, 101, 31))
+        self.BotaoAddCesta.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.BotaoAddCesta.setStyleSheet("QPushButton {  \n"
 "    background-color: rgb(0, 75, 63);\n"
 "    font: 75 7pt \"MS Shell Dlg 2\";\n"
@@ -253,6 +260,7 @@ class Ui_MainWindow(object):
         self.label_14.setObjectName("label_14")
         self.BotaoAddCesta_2 = QtWidgets.QPushButton(self.frame_2)
         self.BotaoAddCesta_2.setGeometry(QtCore.QRect(30, 180, 101, 31))
+        self.BotaoAddCesta_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.BotaoAddCesta_2.setStyleSheet("QPushButton {  \n"
 "    background-color: rgb(0, 75, 63);\n"
 "    font: 75 7pt \"MS Shell Dlg 2\";\n"
@@ -309,7 +317,8 @@ class Ui_MainWindow(object):
         self.label_13.raise_()
         self.label_14.raise_()
         self.botaoCesta = QtWidgets.QPushButton(self.centralwidget)
-        self.botaoCesta.setGeometry(QtCore.QRect(818, 20, 91, 38))
+        self.botaoCesta.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.botaoCesta.setGeometry(QtCore.QRect(670, 20, 91, 38))
         self.botaoCesta.setStyleSheet("QPushButton {  \n"
 "    background-color: rgb(0, 75, 63);\n"
 "    font: 75 9pt \"MS Shell Dlg 2\";\n"
@@ -386,8 +395,56 @@ class Ui_MainWindow(object):
         self.label_30 = QtWidgets.QLabel(self.frame_7)
         self.label_30.setGeometry(QtCore.QRect(10, 30, 301, 91))
         self.label_30.setObjectName("label_30")
+        self.botaoGerencia = QtWidgets.QPushButton(self.centralwidget)
+        self.botaoGerencia.setCursor((QtGui.QCursor(QtCore.Qt.PointingHandCursor)))
+        self.botaoGerencia.setGeometry(QtCore.QRect(780, 20, 111, 38))
+        self.botaoGerencia.setStyleSheet("QPushButton {  \n"
+                                         "    \n"
+                                         "    background-color: rgb(0, 75, 63);\n"
+                                         "    font: 75 9pt \"MS Shell Dlg 2\";\n"
+                                         "    color: rgb(255, 255, 255); /* Cor do texto */\n"
+                                         "    border-radius: 8px; /* Bordas arredondadas */\n"
+                                         "    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
+                                         "   image: url(:/images/images/gerenciamento-de-projetos.png); /* Caminho da imagem */\n"
+                                         "    image-position:left;   \n"
+                                         "    text-align: right; /* Centraliza o texto */    \n"
+                                         "}\n"
+                                         "\n"
+                                         "QPushButton:hover{\n"
+                                         "  background-color: #E5E5E5;\n"
+                                         "    font: 75 9pt \"MS Shell Dlg 2\";\n"
+                                         "    color: rgb(255, 255, 255); /* Cor do texto */\n"
+                                         "    border-radius: 8px; /* Bordas arredondadas */\n"
+                                         "    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
+                                         "   image: url(:/images/images/gerenciamento-de-projetos.png); /* Caminho da imagem */\n"
+                                         "    image-position:left;   \n"
+                                         "    text-align: right; /* Centraliza o texto */\n"
+                                         "border: 1px solid #CCCCCC;\n"
+                                         "box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */\n"
+                                         "}\n"
+                                         "QPushButton:pressed{\n"
+                                         "background-color: #E5E5E5;\n"
+                                         "    font: 75 9pt \"MS Shell Dlg 2\";\n"
+                                         "    color: rgb(255, 255, 255); /* Cor do texto */\n"
+                                         "    border-radius: 8px; /* Bordas arredondadas */\n"
+                                         "    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
+                                         "  image: url(:/images/images/gerenciamento-de-projetos.png); /* Caminho da imagem */\n"
+                                         "    image-position:left;   \n"
+                                         "    text-align: right; /* Centraliza o texto */\n"
+                                         "border: 1px solid #CCCCCC;\n"
+                                         "box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */\n"
+                                         "background-color: #D6D6D6; /* Fundo mais escuro */\n"
+                                         "    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); /* Menor sombra */\n"
+                                         "    transform: translateY(2px); /* Deslocamento para baixo */\n"
+                                         "    border: 1px solid #AAAAAA; /* Borda mais escura */\n"
+                                         "}\n"
+                                         "\n"
+                                         "\n"
+                                         "")
+        self.botaoGerencia.setObjectName("botaoGerencia")
         self.botaoBuscar_2 = QtWidgets.QPushButton(self.centralwidget)
         self.botaoBuscar_2.setGeometry(QtCore.QRect(850, 390, 71, 81))
+        self.botaoBuscar_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.botaoBuscar_2.setStyleSheet("QPushButton {  \n"
 "   \n"
 "     border-radius: 8px; /* Bordas arredondadas */\n"
@@ -396,31 +453,7 @@ class Ui_MainWindow(object):
 "      \n"
 "}\n"
 "\n"
-"QPushButton:hover{\n"
-"  background-color: #E5E5E5;\n"
-"   \n"
-"    border-radius: 8px; /* Bordas arredondadas */\n"
-"    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
-"  image: url(:/images/images/seta-direita.png);\n"
-"    \n"
-"border: 1px solid #CCCCCC;\n"
-"box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */\n"
-"}\n"
-"QPushButton:pressed{\n"
-"background-color: #E5E5E5;\n"
-"    \n"
-"    border-radius: 8px; /* Bordas arredondadas */\n"
-"    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
-"   image: url(:/images/images/seta-direita.png);\n"
-"    \n"
-"border: 1px solid #CCCCCC;\n"
-"box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */\n"
-"background-color: #D6D6D6; /* Fundo mais escuro */\n"
-"    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); /* Menor sombra */\n"
-"    transform: translateY(2px); /* Deslocamento para baixo */\n"
-"    border: 1px solid #AAAAAA; /* Borda mais escura */\n"
-"}\n"
-"\n"
+
 "\n"
 "")
         self.botaoBuscar_2.setText("")
@@ -433,14 +466,15 @@ class Ui_MainWindow(object):
         self.LineBuscar.raise_()
         self.label_7.raise_()
         self.labelFrase.raise_()
-        self.nomeLogo.raise_()
-        self.logo.raise_()
+        self.btnLogo.raise_()
+        self.btnNomelogo.raise_()
         self.botaoBuscar.raise_()
         self.frame_2.raise_()
         self.botaoCesta.raise_()
         self.frame_5.raise_()
         self.frame_6.raise_()
         self.frame_7.raise_()
+        self.botaoGerencia.raise_()
         self.botaoBuscar_2.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -452,7 +486,9 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Buscar Produto"))
+        icon = QtGui.QIcon(":/images/images/logofolha.png")  # Caminho para sua imagem de logo
+        MainWindow.setWindowIcon(icon)
         self.labelBemvindo.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))
         self.labelBemvindo.setText(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -464,8 +500,8 @@ class Ui_MainWindow(object):
         self.LineBuscar.setPlaceholderText(_translate("MainWindow", "O que você está procurando?"))
         self.label_7.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600; color:#004b3f;\">Resultados da busca por: </span><span style=\" font-size:10pt; color:#004b3f;\">Vitamina C</span></p></body></html>"))
         self.labelFrase.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:400;\">Cuidando da sua saúde com dedicação!</span></p></body></html>"))
-        self.nomeLogo.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
-        self.nomeLogo.setText(_translate("MainWindow", "DrogaLaugh"))
+        self.btnNomelogo.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
+        self.btnNomelogo.setText(_translate("MainWindow", "DrogaLaugh"))
         self.botaoBuscar.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
         self.label_6.setText(_translate("MainWindow", "- 15%"))
         self.label_5.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Vitamina C 1000mg</span></p></body></html>"))
@@ -497,11 +533,23 @@ class Ui_MainWindow(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">Junco, 123</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">Picos - PI</span></p></body></html>"))
         self.label_29.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:9pt; font-weight:600; color:#ffffff;\">Redes Sociais</span></p></body></html>"))
-        self.label_30.setText(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">Instagram<br />Facebook</span></p></body></html>"))
+        self.label_30.setText(_translate(
+                "MainWindow",
+                "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                "p { white-space: nowrap; margin: 5px 0; display: flex; align-items: center; }\n"
+                "img { margin-right: 8px; vertical-align: center; }\n"
+                "span { font-size: 12px; color: #ffffff; }\n"
+                "</style></head>\n"
+                "<body style=\" font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
+                "<p><img src=\":/images/images/instagram.png\" height=\"16\" width=\"16\" /><span> @droga_laugh</span></p>\n"
+                "<p><img src=\":/images/images/facebook.png\" height=\"16\" width=\"16\" /><span> Droga Laugh</span></p>\n"
+                "</body></html>"
+        ))
+
+        self.botaoGerencia.setWhatsThis(
+                _translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
+        self.botaoGerencia.setText(_translate("MainWindow", "GERENCIA"))
         self.botaoBuscar_2.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
 import images_rc
 

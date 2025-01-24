@@ -284,7 +284,9 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Gerenciar"))
+        icon = QtGui.QIcon(":/images/images/logofolha.png")  # Caminho para sua imagem de logo
+        MainWindow.setWindowIcon(icon)
         self.label_7.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600; color:#004b3f;\">GERENCIAR ESTOQUE E RESERVAS</span></p></body></html>"))
         self.btnNomelogo.setWhatsThis(
                 _translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
@@ -307,11 +309,19 @@ class Ui_MainWindow(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">Junco, 123</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">Picos - PI</span></p></body></html>"))
         self.label_29.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:9pt; font-weight:600; color:#ffffff;\">Redes Sociais</span></p></body></html>"))
-        self.label_30.setText(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">Instagram<br />Facebook</span></p></body></html>"))
+        self.label_30.setText(_translate(
+            "MainWindow",
+            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+            "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+            "p { white-space: nowrap; margin: 5px 0; display: flex; align-items: center; }\n"
+            "img { margin-right: 8px; vertical-align: center; }\n"
+            "span { font-size: 12px; color: #ffffff; }\n"
+            "</style></head>\n"
+            "<body style=\" font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
+            "<p><img src=\":/images/images/instagram.png\" height=\"16\" width=\"16\" /><span> @droga_laugh</span></p>\n"
+            "<p><img src=\":/images/images/facebook.png\" height=\"16\" width=\"16\" /><span> Droga Laugh</span></p>\n"
+            "</body></html>"
+        ))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Produto"))
         item = self.tableWidget.horizontalHeaderItem(1)
