@@ -1,4 +1,4 @@
-from entities.medicamento import Medicamento
+from .entities.medicamento import Medicamento
 from postgresdb import PostgresDB
 """
 Importação:

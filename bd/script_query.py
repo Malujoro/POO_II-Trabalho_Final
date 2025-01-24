@@ -1,7 +1,9 @@
 from postgres import Postgres
-from entities.medicamento import Medicamento
-from entities.reserva import Reserva
+from entities import Medicamento
+from entities import Reserva
 from datetime import datetime
+
+
 
 if(__name__ == '__main__'):
     timestamp = datetime.now()
