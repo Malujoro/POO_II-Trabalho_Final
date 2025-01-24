@@ -30,60 +30,60 @@ class TelaCesta(TelaCestaUi):
         self.populate_initial_items()
 
     def populate_initial_items(self):
+        imgs = ["medicina-natural", "drogas", "medicina", "curativo"]
+        cont = 0
         for item in self.cesta:
             self.add_item_to_cesta(
                 self.frame_8, 
-                item.nome, 
-                item.preco, 
+                item,
+                imgs[cont % len(imgs)]
             )
+            cont += 1
 
-    def add_item_to_cesta(self, parent_frame, description, price):
-        try:
-            # Frame do item
-            frame = QtWidgets.QFrame(parent_frame)
-            frame.setGeometry(QtCore.QRect(20, self.next_item_y, 321, 111))
-            frame.setStyleSheet("border-radius:8px;")
-            frame.setObjectName(f"frame_item_{self.next_item_y}")
+    def add_item_to_cesta(self, parent_frame, item, imgurl):
+        # Frame do item
+        frame = QtWidgets.QFrame(parent_frame)
+        frame.setGeometry(QtCore.QRect(20, self.next_item_y, 321, 111))
+        frame.setStyleSheet("border-radius:8px;")
+        frame.setObjectName(f"frame_item_{self.next_item_y}")
 
-            # Create widgets with consistent styling
-            self.label_image = self._create_image_label(frame)
-            self.label_description = self._create_description_label(frame, description)
-            self.label_price = self._create_price_label(frame, price)
-            self.remove_button = self._create_remove_button(frame)
+        # Create widgets with consistent styling
+        label_image = QtWidgets.QLabel(frame)
+        label_image.setGeometry(QtCore.QRect(0, 20, 91, 81))
+        label_image.setStyleSheet(f"image: url(:/images/images/{imgurl}.png);")
 
-            # Update next item position
-            self.next_item_y += 120
+        label_description = QtWidgets.QLabel(frame)
+        label_description.setGeometry(QtCore.QRect(100, 30, 151, 31))
+        label_description.setText(item.nome)
 
-            return frame
+        label_price = QtWidgets.QLabel(frame)
+        label_price.setGeometry(QtCore.QRect(100, 60, 71, 21))
+        label_price.setStyleSheet("font: 75 8pt 'MS Shell Dlg 2'; color:rgb(0, 75, 63)")
+        label_price.setText(f"R$ {item.preco:.2f}")
+    
+        remove_button = QtWidgets.QPushButton(frame)
+        remove_button.setGeometry(QtCore.QRect(270, 30, 41, 38))
+        remove_button.setStyleSheet("""
+            QPushButton {
+                image: url(:/images/images/lixeira-de-reciclagem.png);
+            }
+        """)
+        remove_button.clicked.connect(partial(self.remover, item))
 
-        except Exception as e:
-            print(f"Error adding item: {e}")
-            return None
+        # Quantity spinbox
+        spinbox = QtWidgets.QSpinBox(frame)
+        spinbox.setGeometry(QtCore.QRect(260, 70, 42, 22))
+        spinbox.setMinimum(1)
+        spinbox.setMaximum(50)
+        spinbox.setValue(1)
 
-    def create_image_label(self, parent):
-        label = QtWidgets.QLabel(parent)
-        label.setGeometry(QtCore.QRect(0, 20, 91, 81))
-        label.setStyleSheet("background-color: rgb(165, 165, 165); border-radius:8px;")
-        return label
+        # Show the frame
+        frame.show()
 
-    def create_description_label(self, parent, description):
-        label = QtWidgets.QLabel(parent)
-        label.setGeometry(QtCore.QRect(100, 30, 151, 31))
-        label.setText(description)
-        return label
+        # Update next item position
+        self.next_item_y += 120
 
-    def create_price_label(self, parent, price):
-        label = QtWidgets.QLabel(parent)
-        label.setGeometry(QtCore.QRect(100, 60, 71, 21))
-        label.setStyleSheet("font: 75 8pt 'MS Shell Dlg 2'; color:rgb(0, 75, 63)")
-        label.setText(f"R$ {price}")
-        return label
-
-    def create_remove_button(self, parent):
-        button = QtWidgets.QPushButton(parent)
-        button.setGeometry(QtCore.QRect(270, 30, 41, 38))
-        button.setStyleSheet("QPushButton {image: url(:/images/images/lixeira-de-reciclagem.png);}")
-        return button
+        return frame
 
     def reservar(self):
         nome = self.text_nome.text()
@@ -93,15 +93,26 @@ class TelaCesta(TelaCestaUi):
 
         reserva = Reserva(None, cpf, nome, timestamp, self.cesta)
         self.banco.insert_reserva(reserva)
-
-# Converter para string no formato PostgreSQL (yyyy-MM-dd HH:mm:ss)
-
-        pass
+        self.mainWindow.close()
 
     def remover(self, medicamento):
         if medicamento in self.cesta:
             self.cesta.remove(medicamento)
-        self.mainWindow.close()
+
+
+            for frame in self.frame_8.findChildren(QtWidgets.QFrame):
+                if frame.objectName().startswith("frame_item_"):
+                    frame.deleteLater()
+
+
+            self.next_item_y = 250
+
+            self.populate_initial_items()
+
+            self.label_2.setText(f'<html><head/><body><p><span style=" color:#004b3f;">{len(self.cesta)} item{"s" if len(self.cesta) > 1 else ""}</span></p></body></html>')
+            
+            if(len(self.cesta) == 0):
+                self.mainWindow.close()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
