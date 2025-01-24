@@ -9,6 +9,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from bd import Postgres
 from bd.entities.medicamento import Medicamento
+from bd.entities.reserva import Reserva
 
 class TelaGerenciar(TelaGerenciarUi):
 
@@ -17,10 +18,27 @@ class TelaGerenciar(TelaGerenciarUi):
         mainWindow.show()
         self.banco = Postgres()
         self.get_all_products()
+        self.get_all_reservas()
 
-        self.updateButton.clicked.connect(self.update_table_info)
+        self.updateButton.clicked.connect(self.update_table1_info)
+        self.updateButton.clicked.connect(self.update_table2_info)
 
-        self.tableWidget.itemChanged.connect(self.new_line)
+        self.tableWidget.itemChanged.connect(self.new_line1)
+
+    def str_to_float(self, string):
+        return float(string.split()[1])
+
+    def is_row_empty(self, tableWidget, row):
+        return all(
+            not tableWidget.item(row, col) or not tableWidget.item(row, col).text().strip()
+            for col in range(tableWidget.columnCount())
+        )
+    
+    def is_row_filled(self, tableWidget, row):
+        return all(
+            tableWidget.item(row, col) and tableWidget.item(row, col).text().strip()
+            for col in range(tableWidget.columnCount())
+        )
 
     def get_all_products(self):
         self.tableWidget.setRowCount(0)
@@ -36,16 +54,11 @@ class TelaGerenciar(TelaGerenciarUi):
             cont += 1
 
         self.tableWidget.insertRow(cont)
-        # for i in range(self.tableWidget.columnCount()):
-        #     self.tableWidget.setItem(cont, i, None)
     
-    def str_to_float(self, string):
-        return float(string.split()[1])
-
-    def update_table_info(self):
+    def update_table1_info(self):
         tamanho = len(self.medicamentos)
         for row in range(self.tableWidget.rowCount()):
-            if(self.is_row_empty(row)):
+            if(self.is_row_empty(self.tableWidget, row)):
                 if(row < tamanho):
                     self.banco.delete_medicamento_by_id(self.medicamentos[row].medicamento_id)
             else:
@@ -60,28 +73,49 @@ class TelaGerenciar(TelaGerenciarUi):
                         self.medicamentos[row].preco = preco
                         self.medicamentos[row].quantidade_estoque = quantidade
                         self.banco.update_medicamento(self.medicamentos[row])
-                elif(self.is_row_filled(row)):
+                elif(self.is_row_filled(self.tableWidget, row)):
                     self.banco.insert_medicamento(Medicamento(None, nome, preco, quantidade))
         
         self.get_all_products()
 
-
-    def is_row_empty(self, row):
-        return all(
-            not self.tableWidget.item(row, col) or not self.tableWidget.item(row, col).text().strip()
-            for col in range(self.tableWidget.columnCount())
-        )
-    
-    def is_row_filled(self, row):
-        return all(
-            self.tableWidget.item(row, col) and self.tableWidget.item(row, col).text().strip()
-            for col in range(self.tableWidget.columnCount())
-        )
-
-    def new_line(self, item):
+    def new_line1(self, item):
         row = item.row()
-        if row == self.tableWidget.rowCount() - 2 and self.is_row_filled(row):
+        if row == self.tableWidget.rowCount() - 2 and self.is_row_filled(self.tableWidget, row):
             self.tableWidget.insertRow(self.tableWidget.rowCount())
+
+    def get_all_reservas(self):
+        self.tableWidget_2.setRowCount(0)
+        self.reservas = []
+
+        cont = 0
+        for reserva in self.banco.select_all_reservas():
+            for medic in self.medicamentos:
+                if(medic.nome == reserva[6]):
+                    prod = medic
+                
+            self.tableWidget_2.insertRow(cont)
+            self.tableWidget_2.setItem(cont, 0, QTableWidgetItem(reserva[2]))
+            self.tableWidget_2.setItem(cont, 1, QTableWidgetItem(reserva[6]))
+            self.tableWidget_2.setItem(cont, 2, QTableWidgetItem(f"R$ {reserva[5]:.2f}"))
+            self.tableWidget_2.setItem(cont, 3, QTableWidgetItem(reserva[3].strftime("%d/%m/%Y %H:%M:%S")))
+            self.reservas.append(Reserva(reserva[0], reserva[1], reserva[2], reserva[3], [prod]))
+            cont += 1
+
+        self.tableWidget_2.insertRow(cont)
+    
+    def update_table2_info(self):
+        tamanho = len(self.reservas)
+        for row in range(self.tableWidget_2.rowCount()):
+            if(self.is_row_empty(self.tableWidget_2, row)):
+                if(row < tamanho):
+                    self.banco.delete_reserva_by_id(self.reservas[row].reserva_id)
+            else:
+                nome = self.tableWidget_2.item(row, 0).text()
+                
+                if(row < tamanho and self.reservas[row].nome_cliente != nome):
+                    self.reservas[row].nome_cliente = nome
+                    self.banco.update_reserva(self.reservas[row])        
+        self.get_all_reservas()
 
 
 if __name__ == "__main__":
