@@ -1,6 +1,6 @@
 import socket
 import threading
-from .variaveis import *
+from variaveis import *
 """
 Importações:
 
