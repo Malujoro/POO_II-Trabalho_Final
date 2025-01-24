@@ -12,6 +12,7 @@ class ChatServer:
         self.funcionario_socket = None
         self.lock = threading.Lock()
 
+
     def encaminhar_mensagem(self, conexao, nome):
         try:
             while True:
@@ -33,13 +34,29 @@ class ChatServer:
         except Exception as e:
             print(f"Erro ao encaminhar mensagem: {e}")
         finally:
-            with self.lock:
-                if nome in self.usuarios:
-                    del self.usuarios[nome]
-                conexao.close()
-                
-                if nome == NOME_ADMIN:
-                    self.funcionario_socket = None
+            self.desconectar_usuario(conexao, nome)
+    
+
+    def desconectar_usuario(self, conexao, nome):
+        with self.lock:
+            if nome in self.usuarios:
+                del self.usuarios[nome]
+            conexao.close()
+        
+        if nome == NOME_ADMIN:
+            print(f"Funcionario {nome} desconectado")
+            self.funcionario_socket = None
+
+            for user_nome, user_socket in self.usuarios.items():
+                user_socket.send("O funcionário se desconectou. O atendimento será encerrado.".encode())
+                user_socket.close()
+
+            self.usuarios.clear()
+
+        else:
+            print(f"Cliente {nome} desconectado")
+            if self.funcionario_socket:
+                self.funcionario_socket.send(f"Cliente {nome} desconectado")
 
     def iniciar_servidor(self):
         print(f"Servidor rodando na porta {PORT}")
