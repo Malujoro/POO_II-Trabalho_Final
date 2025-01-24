@@ -1,11 +1,9 @@
 import socket
-import threading
-from variaveis import *
+from .variaveis import *
 """
 Importações:
 1. Importa o módulo socket para criação e manipulação de conexões de rede.
-2. Importa o módulo threading para criar e gerenciar threads no código, permitindo execução concorrente.
-3. Importa todas as variáveis definidas no módulo 'variaveis.py', como configurações de rede e mensagens.
+2. Importa todas as variáveis definidas no módulo 'variaveis.py', como configurações de rede e mensagens.
 """
 
 

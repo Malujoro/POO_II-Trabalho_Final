@@ -1,6 +1,6 @@
 import socket
 import threading
-from variaveis import *
+from .variaveis import *
 """
 Importações:
 
@@ -187,9 +187,9 @@ class ChatServer:
         self.server_socket.close()
 
 
-def main():
+def main_server():
     """
-    Função main:
+    Função main_server:
 
     Inicializa o servidor de chat e inicia o loop para aceitar e gerenciar conexões de clientes e funcionários.
     """
@@ -198,4 +198,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main_server()

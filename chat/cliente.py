@@ -1,8 +1,8 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTextEdit, QLineEdit, QPushButton, QVBoxLayout, QWidget
 from PyQt5.QtCore import QThread, pyqtSignal, QTimer
-from user_class import User
-from variaveis import NOME_CLIENTE
+from .user_class import User
+from .variaveis import NOME_CLIENTE
 """
 Importações:
 
@@ -171,9 +171,9 @@ class ClientWindow(QMainWindow):
         event.accept()
 
 
-def main():
+def main_cliente():
     """
-    Função main:
+    Função main_cliente:
 
     Inicializa a aplicação PyQt5, cria a janela do cliente e inicia o loop de eventos.
     """
@@ -184,4 +184,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main_cliente()

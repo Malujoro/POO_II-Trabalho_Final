@@ -1,8 +1,8 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTextEdit, QLineEdit, QPushButton, QVBoxLayout, QWidget, QLabel
 from PyQt5.QtCore import QThread, pyqtSignal
-from user_class import User
-from variaveis import NOME_ADMIN
+from .user_class import User
+from .variaveis import NOME_ADMIN
 """
 Importações:
 
@@ -142,11 +142,11 @@ class FuncionarioWindow(QMainWindow):
         event.accept()
 
 
-def main():
+def main_funcionario():
     """
-    Método closeEvent:
+    Função main_funcionario:
 
-    Finaliza a conexão do administrador ao fechar a janela, fechando a conexão do usuário.
+    Inicializa a aplicação PyQt5, cria a janela do funcionario e inicia o loop de eventos.
     """
     app = QApplication(sys.argv)
     window = FuncionarioWindow()
@@ -155,4 +155,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main_funcionario()
