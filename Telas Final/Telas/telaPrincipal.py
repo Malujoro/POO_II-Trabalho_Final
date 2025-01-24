@@ -332,11 +332,6 @@ class TelaPrincipalUi(object):
         self.label_9.setStyleSheet("font: 75 8pt \"MS Shell Dlg 2\";\n"
 "color:rgb(0, 75, 63)")
         self.label_9.setObjectName("label_9")
-        self.label_10 = QtWidgets.QLabel(self.frame)
-        self.label_10.setGeometry(QtCore.QRect(70, 150, 55, 21))
-        self.label_10.setStyleSheet("font: 6pt \"MS Shell Dlg 2\";\n"
-"text-decoration: line-through;")
-        self.label_10.setObjectName("label_10")
         self.BotaoAddCesta = QtWidgets.QPushButton(self.frame)
         self.BotaoAddCesta.setGeometry(QtCore.QRect(30, 180, 101, 31))
         self.BotaoAddCesta.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -398,11 +393,6 @@ class TelaPrincipalUi(object):
         self.label_13.setStyleSheet("font: 75 8pt \"MS Shell Dlg 2\";\n"
 "color:rgb(0, 75, 63)")
         self.label_13.setObjectName("label_13")
-        self.label_14 = QtWidgets.QLabel(self.frame_2)
-        self.label_14.setGeometry(QtCore.QRect(70, 150, 55, 21))
-        self.label_14.setStyleSheet("font: 6pt \"MS Shell Dlg 2\";\n"
-"text-decoration: line-through;")
-        self.label_14.setObjectName("label_14")
         self.BotaoAddCesta_2 = QtWidgets.QPushButton(self.frame_2)
         self.BotaoAddCesta_2.setGeometry(QtCore.QRect(30, 180, 101, 31))
         self.BotaoAddCesta_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -459,7 +449,6 @@ class TelaPrincipalUi(object):
         self.BotaoAddCesta_2.raise_()
         self.label_12.raise_()
         self.label_13.raise_()
-        self.label_14.raise_()
         self.frame_3 = QtWidgets.QFrame(self.centralwidget)
         self.frame_3.setGeometry(QtCore.QRect(490, 430, 161, 211))
         self.frame_3.setStyleSheet(
@@ -485,11 +474,6 @@ class TelaPrincipalUi(object):
         self.label_17.setStyleSheet("font: 75 8pt \"MS Shell Dlg 2\";\n"
 "color:rgb(0, 75, 63)")
         self.label_17.setObjectName("label_17")
-        self.label_18 = QtWidgets.QLabel(self.frame_3)
-        self.label_18.setGeometry(QtCore.QRect(70, 150, 55, 21))
-        self.label_18.setStyleSheet("font: 6pt \"MS Shell Dlg 2\";\n"
-"text-decoration: line-through;")
-        self.label_18.setObjectName("label_18")
         self.BotaoAddCesta_3 = QtWidgets.QPushButton(self.frame_3)
         self.BotaoAddCesta_3.setGeometry(QtCore.QRect(30, 180, 101, 31))
         self.BotaoAddCesta_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -564,11 +548,6 @@ class TelaPrincipalUi(object):
         self.label_22.setStyleSheet("font: 75 8pt \"MS Shell Dlg 2\";\n"
 "color:rgb(0, 75, 63)")
         self.label_22.setObjectName("label_22")
-        self.label_23 = QtWidgets.QLabel(self.frame_4)
-        self.label_23.setGeometry(QtCore.QRect(70, 150, 55, 21))
-        self.label_23.setStyleSheet("font: 6pt \"MS Shell Dlg 2\";\n"
-"text-decoration: line-through;")
-        self.label_23.setObjectName("label_23")
         self.BotaoAddCesta_4 = QtWidgets.QPushButton(self.frame_4)
         self.BotaoAddCesta_4.setGeometry(QtCore.QRect(30, 180, 101, 31))
         self.BotaoAddCesta_4.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -822,22 +801,18 @@ class TelaPrincipalUi(object):
 
         self.label_5.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Vitamina C 1000mg</span></p></body></html>"))
         self.label_9.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">R$ 76.42 </span></p></body></html>"))
-        self.label_10.setText(_translate("MainWindow", "<html><head/><body><p>R$ 89.90</p></body></html>"))
         self.BotaoAddCesta.setText(_translate("MainWindow", "ADICIONAR"))
 
         self.label_12.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Vitamina C 1000mg</span></p></body></html>"))
         self.label_13.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">R$ 76.42 </span></p></body></html>"))
-        self.label_14.setText(_translate("MainWindow", "<html><head/><body><p>R$ 89.90</p></body></html>"))
         self.BotaoAddCesta_2.setText(_translate("MainWindow", "ADICIONAR"))
         self.label_15.setText(_translate("MainWindow", "- 15%"))
         self.label_16.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Vitamina C 1000mg</span></p></body></html>"))
         self.label_17.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">R$ 76.42 </span></p></body></html>"))
-        self.label_18.setText(_translate("MainWindow", "<html><head/><body><p>R$ 89.90</p></body></html>"))
         self.BotaoAddCesta_3.setText(_translate("MainWindow", "ADICIONAR"))
         self.label_20.setText(_translate("MainWindow", "- 15%"))
         self.label_21.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Vitamina C 1000mg</span></p></body></html>"))
         self.label_22.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">R$ 76.42 </span></p></body></html>"))
-        self.label_23.setText(_translate("MainWindow", "<html><head/><body><p>R$ 89.90</p></body></html>"))
         self.BotaoAddCesta_4.setText(_translate("MainWindow", "ADICIONAR"))
         self.botaoCesta.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
         self.botaoCesta.setText(_translate("MainWindow", "R$0,00"))
@@ -877,7 +852,6 @@ class TelaPrincipalUi(object):
         self.botaoGerencia.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
         self.botaoGerencia.setText(_translate("MainWindow", "GERENCIA"))
         self.btnLogo.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
-import images_rc
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

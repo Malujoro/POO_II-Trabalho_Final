@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class TelaCestaVazia(object):
+class TelaCestaVaziaUi(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(931, 840)
@@ -107,14 +107,14 @@ class TelaCestaVazia(object):
         self.label_3.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:400; color:#000000;\">Sua cesta está vazia</span></p></body></html>"))
         self.label_2.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" color:#004b3f;\">Confira nossas ofertas!</span></p></body></html>"))
         self.botaoIrparaOfertas.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
-        self.botaoIrparaOfertas.setText(_translate("MainWindow", "IR PARA OFERTAS"))
+        self.botaoIrparaOfertas.setText(_translate("MainWindow", "IR PARA HOME"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = TelaCestaVazia()
+    ui = TelaCestaVaziaUi()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

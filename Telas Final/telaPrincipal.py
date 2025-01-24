@@ -7,8 +7,15 @@ from telaCesta import TelaCesta
 from telaGerenciar import TelaGerenciar
 from Telas.telaPrincipal import TelaPrincipalUi
 # from ..telaChat import TelaChat
+from functools import partial
 import Telas.images_rc
 import os 
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from bd import Postgres
+from bd.entities.medicamento import Medicamento
+
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -23,14 +30,23 @@ class TelaPrincipal(TelaPrincipalUi):
 
         self.botaoReservar.clicked.connect(self.reservar_produtos_tela)
 
+        self.cesta = []
+
+        self.banco = Postgres()
+        self.get_all_products()
         # self.botaoChat.clicked.connect(self.chat_tela)
+        self.botaoGerencia.clicked.connect(self.gerencia)
 
 
     def cesta_tela(self):
-        self.nova_tela = TelaCesta(self.mainWindow)
+        if(len(self.cesta) == 0):
+            self.nova_tela = TelaCestaVazia(self.mainWindow)
+        else:
+            self.nova_tela = TelaCesta(self.mainWindow, self.cesta)
     
-    def cesta_vazia_tela(self):
-        self.nova_tela = TelaCestaVazia()  
+    def gerencia(self):
+        self.nova_tela = TelaGerenciar(self.mainWindow)  
+
 
     def reservar_produtos_tela(self):
         print("reservar")
@@ -40,6 +56,27 @@ class TelaPrincipal(TelaPrincipalUi):
     # def chat_tela(self):
     #     self.nova_tela = TelaChat()
 
+    def get_all_products(self):
+        self.medicamentos = []
+
+        for prod in self.banco.select_all_medicamentos():
+            self.medicamentos.append(Medicamento(prod[0], prod[1], float(prod[2]), int(prod[3])))
+        
+        nomes = [self.label_5, self.label_12, self.label_16, self.label_21]
+        precos = [self.label_9, self.label_13, self.label_17, self.label_22]
+        botoes = [self.BotaoAddCesta, self.BotaoAddCesta_2, self.BotaoAddCesta_3, self.BotaoAddCesta_4]
+        cont = 0
+        for medic in self.medicamentos:
+            nomes[cont].setText(medic.nome)
+            precos[cont].setText(f"R$ {medic.preco:.2f}")
+            botoes[cont].clicked.connect(partial(self.add_cesta, medic))
+            
+            cont += 1
+
+    def add_cesta(self, medicamento):
+        print(medicamento)
+        if medicamento not in self.cesta:
+            self.cesta.append(medicamento)
 
         
 if __name__ == "__main__":

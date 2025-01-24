@@ -11,7 +11,13 @@ class TelaCestaVazia(TelaCestaVaziaUi):
 
     def __init__(self, mainWindow):
         super().setupUi(mainWindow)
+        self.mainWindow = mainWindow
         mainWindow.show()
+
+        self.botaoIrparaOfertas.clicked.connect(self.fechar)
+
+    def fechar(self):
+        self.mainWindow.close()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
