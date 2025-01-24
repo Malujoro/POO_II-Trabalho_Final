@@ -83,12 +83,7 @@ class Ui_MainWindow(object):
 "")
         self.label_8.setText("")
         self.label_8.setObjectName("label_8")
-        self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(0, 70, 931, 601))
-        self.label_3.setStyleSheet("\n"
-"background-color: rgb(255, 255, 255);")
-        self.label_3.setText("")
-        self.label_3.setObjectName("label_3")
+
         self.labelFrase = QtWidgets.QLabel(self.centralwidget)
         self.labelFrase.setGeometry(QtCore.QRect(310, 190, 301, 21))
         self.labelFrase.setStyleSheet("font: 75 8pt \"MS Shell Dlg 2\";\n"
@@ -157,6 +152,7 @@ class Ui_MainWindow(object):
         self.frame = QtWidgets.QFrame(self.centralwidget)
         self.frame.setGeometry(QtCore.QRect(30, 360, 161, 211))
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setStyleSheet("background-color: white; ")
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
         self.label = QtWidgets.QLabel(self.frame)
@@ -235,6 +231,8 @@ class Ui_MainWindow(object):
         self.frame_2 = QtWidgets.QFrame(self.centralwidget)
         self.frame_2.setGeometry(QtCore.QRect(210, 360, 161, 211))
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_2.setStyleSheet(
+            "background-color: white; ")
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_2.setObjectName("frame_2")
         self.label_11 = QtWidgets.QLabel(self.frame_2)
@@ -458,7 +456,7 @@ class Ui_MainWindow(object):
 "")
         self.botaoBuscar_2.setText("")
         self.botaoBuscar_2.setObjectName("botaoBuscar_2")
-        self.label_3.raise_()
+
         self.label_8.raise_()
         self.frame.raise_()
         self.label_2.raise_()

@@ -84,12 +84,7 @@ class TelaBuscarVaziaUi(object):
 "")
         self.label_8.setText("")
         self.label_8.setObjectName("label_8")
-        self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(0, 70, 931, 601))
-        self.label_3.setStyleSheet("\n"
-"background-color: rgb(255, 255, 255);")
-        self.label_3.setText("")
-        self.label_3.setObjectName("label_3")
+
         self.labelFrase = QtWidgets.QLabel(self.centralwidget)
         self.labelFrase.setGeometry(QtCore.QRect(310, 190, 301, 21))
         self.labelFrase.setStyleSheet("font: 75 8pt \"MS Shell Dlg 2\";\n"
@@ -292,7 +287,7 @@ class TelaBuscarVaziaUi(object):
         self.label_17.setGeometry(QtCore.QRect(550, 360, 81, 16))
         self.label_17.setStyleSheet("font: 9pt \"MS Shell Dlg 2\";")
         self.label_17.setObjectName("label_17")
-        self.label_3.raise_()
+
         self.label_8.raise_()
         self.label_2.raise_()
         self.labelBemvindo.raise_()

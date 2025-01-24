@@ -78,12 +78,7 @@ class Ui_MainWindow(object):
 "                    ")
         self.label_8.setText("")
         self.label_8.setObjectName("label_8")
-        self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(0, 70, 931, 601))
-        self.label_3.setStyleSheet("\n"
-"                        background-color: rgb(255, 255, 255);")
-        self.label_3.setText("")
-        self.label_3.setObjectName("label_3")
+
         self.btnNomelogo = QtWidgets.QPushButton(self.centralwidget)
         self.btnNomelogo.setGeometry(QtCore.QRect(70, 10, 181, 51))
         self.btnNomelogo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -148,6 +143,8 @@ class Ui_MainWindow(object):
         self.frame.setGeometry(QtCore.QRect(40, 210, 161, 211))
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setStyleSheet(
+            "background-color: white; ")
         self.frame.setObjectName("frame")
         self.label = QtWidgets.QLabel(self.frame)
         self.label.setGeometry(QtCore.QRect(0, 0, 161, 121))
@@ -226,6 +223,8 @@ class Ui_MainWindow(object):
         self.frame_2.setGeometry(QtCore.QRect(220, 210, 161, 211))
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_2.setStyleSheet(
+            "background-color: white; ")
         self.frame_2.setObjectName("frame_2")
         self.label_11 = QtWidgets.QLabel(self.frame_2)
         self.label_11.setGeometry(QtCore.QRect(110, 10, 41, 31))
@@ -432,7 +431,7 @@ class Ui_MainWindow(object):
                                          "\n"
                                          "")
         self.botaoGerencia.setObjectName("botaoGerencia")
-        self.label_3.raise_()
+
         self.label_8.raise_()
         self.frame.raise_()
         self.label_2.raise_()
