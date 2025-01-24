@@ -28,7 +28,6 @@ Reduzir filas e melhorar a experiência de compra, proporcionando atendimento á
 
 ### Para os Funcionários:
 - 🗃️ **Gerenciamento de Estoque**: Adicione, edite ou remova medicamentos em tempo real.
-- 📢 **Promoções Semanais**: Cadastre ofertas promocionais visíveis para os clientes.
 - 💻 **Atendimento via Chat**: Forneça suporte aos clientes pelo chat integrado.
 
 ---
