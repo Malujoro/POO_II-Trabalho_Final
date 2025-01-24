@@ -113,7 +113,7 @@ class Postgres(PostgresDB):
         id (int): ID do medicamento a ser removido.
         """
         if (id):
-            self._cursor.execute("""DELETE FROM medicamento WHERE medicamento_id = %s;""", id)
+            self._cursor.execute("""DELETE FROM medicamento WHERE medicamento_id = %s;""", (id,))
             self._conn.commit()
 
     def update_medicamento(self, medicamento: Medicamento) -> None:
