@@ -23,13 +23,21 @@ class ChatServer:
                 # Verifica o remetente
                 if nome == NOME_ADMIN:
                     # Se for admin, envia para o cliente
-                    for user_name, user_socket in self.usuarios.items():
-                        if user_name != NOME_ADMIN:
-                            user_socket.send(f"{nome}: {mensagem}".encode())
+                    for user_nome, user_socket in list(self.usuarios.items()):
+                        if user_nome != NOME_ADMIN:
+                            try: 
+                                user_socket.send(f"{nome}: {mensagem}".encode())
+                            except (BrokenPipeError, ConnectionResetError):
+                                print(f"Erro ao enviar mensagem para o cliente {user_nome}.")
+                                self.desconectar_usuario(user_socket, user_nome)
                 else:
                     # Se for cliente, envia para o admin
                     if self.funcionario_socket:
-                        self.funcionario_socket.send(f"{nome}: {mensagem}".encode())
+                        try:
+                            self.funcionario_socket.send(f"{nome}: {mensagem}".encode())
+                        except (BrokenPipeError, ConnectionResetError):
+                            print("Erro ao enviar mensagem para o funcionário.")
+                            self.desconectar_usuario(self.funcionario_socket, NOME_ADMIN)
 
         except Exception as e:
             print(f"Erro ao encaminhar mensagem: {e}")
@@ -41,22 +49,30 @@ class ChatServer:
         with self.lock:
             if nome in self.usuarios:
                 del self.usuarios[nome]
+
             conexao.close()
         
-        if nome == NOME_ADMIN:
-            print(f"Funcionario {nome} desconectado")
-            self.funcionario_socket = None
+            if nome == NOME_ADMIN:
+                print(f"Funcionario {nome} desconectado")
+                self.funcionario_socket = None
 
-            for user_nome, user_socket in self.usuarios.items():
-                user_socket.send("O funcionário se desconectou. O atendimento será encerrado.".encode())
-                user_socket.close()
+                for user_nome, user_socket in self.usuarios.items():
+                    try:
+                        user_socket.send("O funcionário se desconectou. O atendimento será encerrado.".encode())
+                    except (BrokenPipeError, ConnectionResetError):
+                        print(f"Erro ao notificar cliente {user_nome} sobre a desconexão do funcionário.")
+                    finally:
+                        user_socket.close()
 
-            self.usuarios.clear()
+                self.usuarios.clear()
 
-        else:
-            print(f"Cliente {nome} desconectado")
-            if self.funcionario_socket:
-                self.funcionario_socket.send(f"Cliente {nome} desconectado")
+            else:
+                print(f"Cliente {nome} desconectado")
+                if self.funcionario_socket:
+                    try:
+                        self.funcionario_socket.send(f"Cliente {nome} desconectado".encode())
+                    except (BrokenPipeError, ConnectionResetError):
+                        print("Erro ao notificar o funcionário sobre a desconexão do cliente.")
 
     def iniciar_servidor(self):
         print(f"Servidor rodando na porta {PORT}")
