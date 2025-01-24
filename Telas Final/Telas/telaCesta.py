@@ -141,10 +141,6 @@ class TelaCestaUi(object):
         self.label_9.setObjectName("label_9")
 
         # Preço antigo do item (com risco)
-        self.label_10 = QtWidgets.QLabel(self.frame_2)
-        self.label_10.setGeometry(QtCore.QRect(160, 60, 55, 21))
-        self.label_10.setStyleSheet("font: 6pt 'MS Shell Dlg 2';\ntext-decoration: line-through;")
-        self.label_10.setObjectName("label_10")
 
         # Botão para remover item
         self.botaoCesta_2 = QtWidgets.QPushButton(self.frame_2)
@@ -225,7 +221,6 @@ class TelaCestaUi(object):
         self.botaoCesta.setText(_translate("MainWindow", "RESERVAR PRODUTOS"))
         self.label_5.setText(_translate("MainWindow", "Vitamina C 1000mg"))
         self.label_9.setText(_translate("MainWindow", "R$ 76.42"))
-        self.label_10.setText(_translate("MainWindow", "R$ 89.90"))
 
 # Execução da aplicação
 if __name__ == "__main__":
