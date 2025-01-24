@@ -166,7 +166,7 @@ class ClientWindow(QMainWindow):
 
         Envia uma mensagem de desconexão e fecha a conexão com o usuário ao fechar a janela.
         """
-        self.user.enviar_mensagem("DESCONECTAR")
+        self.user.enviar_mensagem("✨🔮 ~ DESCONECTAR ~ 🔮✨")
         self.user.fechar_conexao()
         event.accept()
 

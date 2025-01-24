@@ -65,8 +65,7 @@ class ChatServer:
                                 user_socket.send(
                                     f"{nome}: {mensagem}".encode())
                             except (BrokenPipeError, ConnectionResetError):
-                                print(f"Erro ao enviar mensagem para o cliente {
-                                      user_nome}.")
+                                print(f"Erro ao enviar mensagem para o cliente {user_nome}.")
                                 self.desconectar_usuario(
                                     user_socket, user_nome)
                 else:
@@ -170,6 +169,7 @@ class ChatServer:
 
                         self.usuarios[nome_usuario] = client_socket
                         print(f"Cliente {nome_usuario} conectado")
+                        client_socket.send("Seja bem-vindo a Drogalaugh!".encode())
                         self.funcionario_socket.send(
                             f"Cliente {nome_usuario} conectado".encode())
 
