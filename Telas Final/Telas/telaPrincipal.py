@@ -468,8 +468,13 @@ class TelaPrincipalUi(object):
         self.BotaoAddCesta_2.setObjectName("BotaoAddCesta_2")
         self.label_4 = QtWidgets.QLabel(self.frame_2)
         self.label_4.setGeometry(QtCore.QRect(0, 0, 161, 121))
-        self.label_4.setStyleSheet("background-color: rgb(165, 165, 165);\n"
-"border-color: rgb(0, 0, 0);")
+        self.label_4.setStyleSheet("""
+            background-image: url(:/images/images/drogas.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 8px;
+            border: 1px solid rgb(0, 0, 0);
+        """)
         self.label_4.setText("")
         self.label_4.setObjectName("label_4")
         self.label_4.raise_()
@@ -897,7 +902,7 @@ class TelaPrincipalUi(object):
         self.botaoGerencia.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
         self.botaoGerencia.setText(_translate("MainWindow", "GERENCIA"))
         self.btnLogo.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
-
+import images_rc
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
