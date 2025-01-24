@@ -18,7 +18,6 @@ class Reserva:
         data_limite (datetime, opcional): Data limite da reserva (padrão: None).
         medicamentos (list, opcional): Lista de medicamentos associados à reserva (padrão: lista vazia).
         """
-
         self._reserva_id = reserva_id
         self._cpf_cliente = cpf_cliente
         self._nome_cliente = nome_cliente
