@@ -235,6 +235,12 @@ class Ui_MainWindow(object):
         self.tableWidget.setColumnCount(4)  # Colunas: Produto, Valor, Ação
         self.tableWidget.setRowCount(0)  # Inicialmente sem linhas
 
+        # Ocultando o cabeçalho vertical (numeração das linhas)
+        self.tableWidget.verticalHeader().setVisible(False)
+
+        # Ajustando a altura padrão de todas as linhas
+        self.tableWidget.verticalHeader().setDefaultSectionSize(50)  # Define a altura de todas as linhas para 50 pixels
+
         # Definindo o cabeçalho da tabela
         self.tableWidget.setHorizontalHeaderLabels(["Id", "Produto", "Valor", ""])
 
@@ -325,6 +331,38 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         MainWindow.setStatusBar(self.statusbar)
+        # Adicionando um exemplo de produto à tabela
+        self.tableWidget.insertRow(0)  # Insere uma nova linha na tabela
+        self.tableWidget.setItem(0, 0, QtWidgets.QTableWidgetItem("001"))  # ID do produto
+        self.tableWidget.setItem(0, 1, QtWidgets.QTableWidgetItem("Produto Exemplo"))  # Nome do produto
+        self.tableWidget.setItem(0, 2, QtWidgets.QTableWidgetItem("R$ 50,00"))  # Valor do produto
+
+        # Criando um botão na coluna "Ação"
+        button = QtWidgets.QPushButton("Adicionar à cesta")
+        button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))  # Cursor de mão ao passar sobre o botão
+        button.setStyleSheet("""
+            QPushButton {
+                background-color: rgb(0, 75, 63);
+                font: 75 7pt "MS Shell Dlg 2";
+                color: white; /* Cor do texto */
+                border-radius: 8px; /* Bordas arredondadas */
+                padding: 5px 10px; /* Padding interno */
+            }
+            QPushButton:hover {
+                background-color: rgb(0, 100, 85);
+            }
+            QPushButton:pressed {
+                background-color: rgb(0, 60, 50);
+            }
+        """)
+
+        # Conectando o botão a uma ação diretamente com lambda
+        button.clicked.connect(lambda: QtWidgets.QMessageBox.information(
+            None, "Ação", "Produto adicionado à cesta com sucesso!"
+        ))
+
+        # Adicionando o botão à célula da tabela
+        self.tableWidget.setCellWidget(0, 3, button)  # Coluna "Ação"
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
