@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class TelaProdutos(object):
+class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(931, 840)
@@ -46,29 +46,8 @@ class TelaProdutos(object):
 "                    ")
         self.label_2.setText("")
         self.label_2.setObjectName("label_2")
-        self.LineBuscar = QtWidgets.QLineEdit(self.centralwidget)
-        self.LineBuscar.setGeometry(QtCore.QRect(190, 90, 541, 41))
-        font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(9)
-        font.setBold(True)
-        font.setWeight(75)
-        self.LineBuscar.setFont(font)
-        self.LineBuscar.setCursor(QtGui.QCursor(QtCore.Qt.IBeamCursor))
-        self.LineBuscar.setStyleSheet("QLineEdit {\n"
-"                        border: 1px solid #CCCCCC;\n"
-"                        border-radius: 8px;\n"
-"                        padding: 5px;\n"
-"                        }\n"
-"\n"
-"                        QLineEdit ::focus {\n"
-"                        background-color: rgb(0, 75, 63);\n"
-"                        }")
-        self.LineBuscar.setFrame(True)
-        self.LineBuscar.setClearButtonEnabled(False)
-        self.LineBuscar.setObjectName("LineBuscar")
         self.label_7 = QtWidgets.QLabel(self.centralwidget)
-        self.label_7.setGeometry(QtCore.QRect(20, 160, 181, 41))
+        self.label_7.setGeometry(QtCore.QRect(360, 90, 230, 41))
         self.label_7.setObjectName("label_7")
         self.label_8 = QtWidgets.QLabel(self.centralwidget)
         self.label_8.setGeometry(QtCore.QRect(0, 670, 931, 161))
@@ -99,146 +78,11 @@ class TelaProdutos(object):
                                        "\n"
                                        "")
         self.btnNomelogo.setObjectName("btnNomelogo")
-        self.botaoBuscar = QtWidgets.QPushButton(self.centralwidget)
-        self.botaoBuscar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.botaoBuscar.setGeometry(QtCore.QRect(690, 90, 41, 41))
-        self.botaoBuscar.setStyleSheet("QPushButton {\n"
-"                        background-color: rgb(0, 75, 63);\n"
-"                        border-radius: 8px; /* Bordas arredondadas */\n"
-"                        padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
-"                        image: url(:/images/images/lupa-arredondada.png); /* Caminho da imagem */\n"
-"\n"
-"                        }\n"
-"\n"
-"                        QPushButton:hover{\n"
-"                        background-color: #E5E5E5;\n"
-"\n"
-"                        border-radius: 8px; /* Bordas arredondadas */\n"
-"                        padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
-"                        image: url(:/images/images/lupa-arredondada.png); /* Caminho da imagem */\n"
-"\n"
-"                        border: 1px solid #CCCCCC;\n"
-"                        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */\n"
-"                        }\n"
-"                        QPushButton:pressed{\n"
-"                        background-color: #E5E5E5;\n"
-"\n"
-"                        border-radius: 8px; /* Bordas arredondadas */\n"
-"                        padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
-"                        image: url(:/images/images/lupa-arredondada.png); /* Caminho da imagem */\n"
-"\n"
-"                        border: 1px solid #CCCCCC;\n"
-"                        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */\n"
-"                        background-color: #D6D6D6; /* Fundo mais escuro */\n"
-"                        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); /* Menor sombra */\n"
-"                        transform: translateY(2px); /* Deslocamento para baixo */\n"
-"                        border: 1px solid #AAAAAA; /* Borda mais escura */\n"
-"                        }\n"
-"\n"
-"\n"
-"                    ")
-        self.botaoBuscar.setText("")
-        self.botaoBuscar.setObjectName("botaoBuscar")
 
 
 
-        self.BotaoAddCesta = QtWidgets.QPushButton()
-        self.BotaoAddCesta.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.BotaoAddCesta.setGeometry(QtCore.QRect(30, 180, 101, 31))
-        self.BotaoAddCesta.setStyleSheet("QPushButton {\n"
-"                            background-color: rgb(0, 75, 63);\n"
-"                            font: 75 7pt \"MS Shell Dlg 2\";\n"
-"                            color: rgb(255, 255, 255); /* Cor do texto */\n"
-"                            border-radius: 8px; /* Bordas arredondadas */\n"
-"                            padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
-"                            image: url(:/images/images/001-shopping-basket.png); /* Caminho da imagem */\n"
-"                            image-position:left;\n"
-"                            text-align: right; /* Centraliza o texto */\n"
-"                            }\n"
-"\n"
-"                            QPushButton:hover{\n"
-"                            background-color: #E5E5E5;\n"
-"                            font: 75 7pt \"MS Shell Dlg 2\";\n"
-"                            color: rgb(255, 255, 255); /* Cor do texto */\n"
-"                            border-radius: 8px; /* Bordas arredondadas */\n"
-"                            padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
-"                            image: url(:/images/images/001-shopping-basket.png); /* Caminho da imagem */\n"
-"                            image-position:left;\n"
-"                            text-align: right; /* Centraliza o texto */\n"
-"                            border: 1px solid #CCCCCC;\n"
-"                            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */\n"
-"                            }\n"
-"                            QPushButton:pressed{\n"
-"                            background-color: #E5E5E5;\n"
-"                            font: 75 7pt \"MS Shell Dlg 2\";\n"
-"                            color: rgb(255, 255, 255); /* Cor do texto */\n"
-"                            border-radius: 8px; /* Bordas arredondadas */\n"
-"                            padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
-"                            image: url(:/images/images/001-shopping-basket.png); /* Caminho da imagem */\n"
-"                            image-position:left;\n"
-"                            text-align: right; /* Centraliza o texto */\n"
-"                            border: 1px solid #CCCCCC;\n"
-"                            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */\n"
-"                            background-color: #D6D6D6; /* Fundo mais escuro */\n"
-"                            box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); /* Menor sombra */\n"
-"                            transform: translateY(2px); /* Deslocamento para baixo */\n"
-"                            border: 1px solid #AAAAAA; /* Borda mais escura */\n"
-"                            }\n"
-"\n"
-"\n"
-"                        ")
-        self.BotaoAddCesta.setObjectName("BotaoAddCesta")
 
 
-
-        self.BotaoAddCesta_2 = QtWidgets.QPushButton()
-        self.BotaoAddCesta_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.BotaoAddCesta_2.setGeometry(QtCore.QRect(30, 180, 101, 31))
-        self.BotaoAddCesta_2.setStyleSheet("QPushButton {\n"
-"                            background-color: rgb(0, 75, 63);\n"
-"                            font: 75 7pt \"MS Shell Dlg 2\";\n"
-"                            color: rgb(255, 255, 255); /* Cor do texto */\n"
-"                            border-radius: 8px; /* Bordas arredondadas */\n"
-"                            padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
-"                            image: url(:/images/images/001-shopping-basket.png); /* Caminho da imagem */\n"
-"                            image-position:left;\n"
-"                            text-align: right; /* Centraliza o texto */\n"
-"                            }\n"
-"\n"
-"                            QPushButton:hover{\n"
-"                            background-color: #E5E5E5;\n"
-"                            font: 75 7pt \"MS Shell Dlg 2\";\n"
-"                            color: rgb(255, 255, 255); /* Cor do texto */\n"
-"                            border-radius: 8px; /* Bordas arredondadas */\n"
-"                            padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
-"                            image: url(:/images/images/001-shopping-basket.png); /* Caminho da imagem */\n"
-"                            image-position:left;\n"
-"                            text-align: right; /* Centraliza o texto */\n"
-"                            border: 1px solid #CCCCCC;\n"
-"                            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */\n"
-"                            }\n"
-"                            QPushButton:pressed{\n"
-"                            background-color: #E5E5E5;\n"
-"                            font: 75 7pt \"MS Shell Dlg 2\";\n"
-"                            color: rgb(255, 255, 255); /* Cor do texto */\n"
-"                            border-radius: 8px; /* Bordas arredondadas */\n"
-"                            padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
-"                            image: url(:/images/images/001-shopping-basket.png); /* Caminho da imagem */\n"
-"                            image-position:left;\n"
-"                            text-align: right; /* Centraliza o texto */\n"
-"                            border: 1px solid #CCCCCC;\n"
-"                            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */\n"
-"                            background-color: #D6D6D6; /* Fundo mais escuro */\n"
-"                            box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); /* Menor sombra */\n"
-"                            transform: translateY(2px); /* Deslocamento para baixo */\n"
-"                            border: 1px solid #AAAAAA; /* Borda mais escura */\n"
-"                            }\n"
-"\n"
-"\n"
-"                        ")
-        self.BotaoAddCesta_2.setObjectName("BotaoAddCesta_2")
-
-        self.BotaoAddCesta_2.raise_()
 
         self.botaoCesta = QtWidgets.QPushButton(self.centralwidget)
         self.botaoCesta.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -317,6 +161,7 @@ class TelaProdutos(object):
         self.label_29.setGeometry(QtCore.QRect(10, 10, 111, 16))
         self.label_29.setObjectName("label_29")
         self.label_30 = QtWidgets.QLabel(self.frame_7)
+        self.label_30.setGeometry(QtCore.QRect(10, 10, 301, 91))
         self.label_30.setGeometry(QtCore.QRect(10, 20, 301, 91))
         self.label_30.setObjectName("label_30")
         self.botaoGerencia = QtWidgets.QPushButton(self.centralwidget)
@@ -368,21 +213,156 @@ class TelaProdutos(object):
         self.botaoGerencia.setObjectName("botaoGerencia")
 
         self.label_8.raise_()
-
         self.label_2.raise_()
-        self.LineBuscar.raise_()
         self.label_7.raise_()
         self.btnLogo.raise_()
         self.btnNomelogo.raise_()
-        self.botaoBuscar.raise_()
-
         self.botaoCesta.raise_()
-
+        self.frame_5.raise_()
+        self.frame_6.raise_()
+        self.frame_7.raise_()
         self.botaoGerencia.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
+
+
+        # Tabela de produtos
+        self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
+        self.tableWidget.setGeometry(QtCore.QRect(80, 150, 800, 480))
+        self.tableWidget.setObjectName("tableWidget")
+        self.tableWidget.setColumnCount(4)  # Colunas: Produto, Valor, Ação
+        self.tableWidget.setRowCount(0)  # Inicialmente sem linhas
+
+        # Ocultando o cabeçalho vertical (numeração das linhas)
+        self.tableWidget.verticalHeader().setVisible(False)
+
+        # Ajustando a altura padrão de todas as linhas
+        self.tableWidget.verticalHeader().setDefaultSectionSize(50)  # Define a altura de todas as linhas para 50 pixels
+
+        # Definindo o cabeçalho da tabela
+        self.tableWidget.setHorizontalHeaderLabels(["Id", "Produto", "Valor", ""])
+
+        # Ajuste das larguras das colunas
+        self.tableWidget.setColumnWidth(0, 100)
+        self.tableWidget.setColumnWidth(1, 400)  # Coluna de Produto - maior largura
+        self.tableWidget.setColumnWidth(2, 150)  # Coluna de Valor - largura menor
+        self.tableWidget.setColumnWidth(3, 150)  # Coluna de Ação (Botão) - mesma largura que a de Valor
+
+        # Removendo a linha das colunas e as bordas das células
+        self.tableWidget.setStyleSheet("""
+                           QTableWidget {
+                               background-color: white;
+                               border: none;
+                           }
+                           QTableWidget::item {
+                               border-bottom: 1px solid lightgray;
+                               padding: 10px;
+                           }
+                           QHeaderView::section {
+                               background-color: white;
+                               border: none;
+                               padding: 10px;
+                               font-weight: bold;
+                               color: #004b3f;
+                           }
+                           QTableWidget::horizontalHeader {
+                               border: none;
+                           }
+                           QTableWidget::verticalHeader {
+                               border: none;
+                           }
+                           QTableWidget::item:selected {
+                               background-color: #e6f7f1; /* Cor de fundo ao selecionar */
+                           }
+                       """)
+
+        # Exibindo o conteúdo da janela
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        MainWindow.setStatusBar(self.statusbar)
+
+
+
+        # Criando um botão na coluna "Ação" (coluna 3)
+        button = QtWidgets.QPushButton("Adicionar à cesta")
+        button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))  # Cursor de mão ao passar sobre o botão
+        button.setStyleSheet("""
+                           QPushButton {
+                               background-color: rgb(0, 75, 63);
+                               font: 75 7pt "MS Shell Dlg 2";
+                               color: rgb(255, 255, 255); /* Cor do texto */
+                               border-radius: 8px; /* Bordas arredondadas */
+                               padding: 10px; /* Padding interno */
+                               image: url(:/images/images/001-shopping-basket.png); /* Caminho da imagem */
+                               image-position:left;
+                               text-align: right; /* Centraliza o texto */
+                           }
+                           QPushButton:hover {
+                               background-color: #E5E5E5;
+                               font: 75 7pt "MS Shell Dlg 2";
+                               color: rgb(255, 255, 255); /* Cor do texto */
+                               border-radius: 8px;
+                               padding: 10px;
+                               image: url(:/images/images/001-shopping-basket.png);
+                               image-position:left;
+                               text-align: right;
+                               border: 1px solid #CCCCCC;
+                               box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+                           }
+                           QPushButton:pressed {
+                               background-color: #D6D6D6;
+                               font: 75 7pt "MS Shell Dlg 2";
+                               color: rgb(255, 255, 255); /* Cor do texto */
+                               border-radius: 8px;
+                               padding: 10px;
+                               image: url(:/images/images/001-shopping-basket.png);
+                               image-position:left;
+                               text-align: right;
+                               border: 1px solid #CCCCCC;
+                               box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); /* Menor sombra */
+                           }
+                       """)
+
+
+
+        # Exibindo o conteúdo da janela
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        MainWindow.setStatusBar(self.statusbar)
+        # Adicionando um exemplo de produto à tabela
+        self.tableWidget.insertRow(0)  # Insere uma nova linha na tabela
+        self.tableWidget.setItem(0, 0, QtWidgets.QTableWidgetItem("001"))  # ID do produto
+        self.tableWidget.setItem(0, 1, QtWidgets.QTableWidgetItem("Produto Exemplo"))  # Nome do produto
+        self.tableWidget.setItem(0, 2, QtWidgets.QTableWidgetItem("R$ 50,00"))  # Valor do produto
+
+        # Criando um botão na coluna "Ação"
+        button = QtWidgets.QPushButton("Adicionar à cesta")
+        button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))  # Cursor de mão ao passar sobre o botão
+        button.setStyleSheet("""
+            QPushButton {
+                background-color: rgb(0, 75, 63);
+                font: 75 7pt "MS Shell Dlg 2";
+                color: white; /* Cor do texto */
+                border-radius: 8px; /* Bordas arredondadas */
+                padding: 5px 10px; /* Padding interno */
+            }
+            QPushButton:hover {
+                background-color: rgb(0, 100, 85);
+            }
+            QPushButton:pressed {
+                background-color: rgb(0, 60, 50);
+            }
+        """)
+
+        # Conectando o botão a uma ação diretamente com lambda
+        button.clicked.connect(lambda: QtWidgets.QMessageBox.information(
+            None, "Ação", "Produto adicionado à cesta com sucesso!"
+        ))
+
+        # Adicionando o botão à célula da tabela
+        self.tableWidget.setCellWidget(0, 3, button)  # Coluna "Ação"
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -390,23 +370,15 @@ class TelaProdutos(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Produtos"))
-        self.LineBuscar.setToolTip(_translate("MainWindow", "<html><head/><body><p><img\n"
-"                        src=\":/images/images/lupa.png\"/></p></body></html>"))
-        self.LineBuscar.setWhatsThis(_translate("MainWindow", "<html><head/><body><p><img\n"
-"                        src=\":/images/images/lupa.png\"/></p></body></html>"))
-        self.LineBuscar.setPlaceholderText(_translate("MainWindow", "O que você está procurando?"))
-        self.label_7.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600; color:#004b3f;\">Nossos produtos:</span></p></body></html>"))
+
         self.btnNomelogo.setWhatsThis(
                 _translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
         self.btnNomelogo.setText(_translate("MainWindow", "DrogaLaugh"))
 
+        self.label_7.setText(_translate("MainWindow",
+                                        "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600; color:#004b3f;\">Vizualize nossos produtos</span></p></body></html>"))
 
-        self.botaoBuscar.setWhatsThis(_translate("MainWindow", "<html><head/><body><p\n"
-"                        align=\"right\"><br/></p></body></html>"))
 
-        self.BotaoAddCesta.setText(_translate("MainWindow", "ADICIONAR"))
-
-        self.BotaoAddCesta_2.setText(_translate("MainWindow", "ADICIONAR"))
         self.botaoCesta.setWhatsThis(_translate("MainWindow", "<html><head/><body><p\n"
 "                        align=\"right\"><br/></p></body></html>"))
         self.botaoCesta.setText(_translate("MainWindow", "R$0,00"))
@@ -461,13 +433,14 @@ class TelaProdutos(object):
         self.botaoGerencia.setWhatsThis(
                 _translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
         self.botaoGerencia.setText(_translate("MainWindow", "GERENCIA"))
+import images_rc
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = TelaProdutos()
+    ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
