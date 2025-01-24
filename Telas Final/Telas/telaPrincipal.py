@@ -11,9 +11,6 @@ from PyQt5 import uic, QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QGraphicsDropShadowEffect
 from PyQt5.QtGui import QColor
 import sys
-from telaCestaVazia import TelaCestaVazia
-from telaCesta import TelaCesta
-from telaGerenciar import TelaGerenciar
 # from ..telaChat import TelaChat
 import os 
 
@@ -907,4 +904,6 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = TelaPrincipalUi()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
     sys.exit(app.exec_())
