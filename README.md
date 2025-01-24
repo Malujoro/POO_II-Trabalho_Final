@@ -1,1 +1,2 @@
-# POO_II-Trabalho_Final
+# :pill: Sistema de Autoatendimento em Farmácias :pill:
+
