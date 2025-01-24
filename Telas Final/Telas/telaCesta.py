@@ -41,6 +41,7 @@ class TelaCestaUi(object):
         self.label_2.setStyleSheet("font: 10pt \"MS Shell Dlg 2\";")
         self.label_2.setObjectName("label_2")
         self.botaoCesta = QtWidgets.QPushButton(self.frame_8)
+        self.botaoCesta.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.botaoCesta.setGeometry(QtCore.QRect(100, 710, 171, 38))
         self.botaoCesta.setStyleSheet("QPushButton {  \n"
 "    background-color: rgb(0, 75, 63);\n"
@@ -190,8 +191,7 @@ class TelaCestaUi(object):
         self.label_10.setText(_translate("MainWindow", "<html><head/><body><p>R$ 89.90</p></body></html>"))
         self.botaoCesta_2.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
         self.label_6.setText(_translate("MainWindow", "____________________________________________"))
-
-
+import images_rc
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

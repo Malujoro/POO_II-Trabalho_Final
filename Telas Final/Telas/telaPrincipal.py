@@ -717,7 +717,7 @@ class TelaPrincipalUi(object):
         self.label_29.setGeometry(QtCore.QRect(10, 10, 111, 16))
         self.label_29.setObjectName("label_29")
         self.label_30 = QtWidgets.QLabel(self.frame_7)
-        self.label_30.setGeometry(QtCore.QRect(10, 30, 301, 91))
+        self.label_30.setGeometry(QtCore.QRect(10, 20, 301, 91))
         self.label_30.setObjectName("label_30")
         self.botaoGerencia = QtWidgets.QPushButton(self.centralwidget)
         self.botaoGerencia.setCursor((QtGui.QCursor(QtCore.Qt.PointingHandCursor)))
@@ -898,7 +898,7 @@ class TelaPrincipalUi(object):
         self.botaoGerencia.setText(_translate("MainWindow", "GERENCIA"))
         self.btnLogo.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
 
-
+import images_rc
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
