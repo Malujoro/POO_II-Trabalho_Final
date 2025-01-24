@@ -5,6 +5,7 @@ import sys
 from telaCestaVazia import TelaCestaVazia
 from telaCesta import TelaCesta
 from telaGerenciar import TelaGerenciar
+from telaProdutos import TelaProdutos
 from Telas.telaPrincipal import TelaPrincipalUi
 # from ..telaChat import TelaChat
 from functools import partial
@@ -49,9 +50,8 @@ class TelaPrincipal(TelaPrincipalUi):
 
 
     def reservar_produtos_tela(self):
-        print("reservar")
+        self.nova_tela = TelaProdutos(self.mainWindow, self.medicamentos, self.cesta)
         pass
-        # self.nova_tela = ...
         
     # def chat_tela(self):
     #     self.nova_tela = TelaChat()
@@ -74,7 +74,6 @@ class TelaPrincipal(TelaPrincipalUi):
             cont += 1
 
     def add_cesta(self, medicamento):
-        print(medicamento)
         if medicamento not in self.cesta:
             self.cesta.append(medicamento)
 
