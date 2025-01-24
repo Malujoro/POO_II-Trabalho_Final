@@ -17,11 +17,27 @@ class Ui_MainWindow(object):
         MainWindow.resize(931, 840)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.logo = QtWidgets.QLabel(self.centralwidget)
-        self.logo.setGeometry(QtCore.QRect(10, 0, 61, 71))
-        self.logo.setStyleSheet("image:url(:/images/images/logofolha.png)")
-        self.logo.setText("")
-        self.logo.setObjectName("logo")
+        self.btnLogo = QtWidgets.QPushButton(self.centralwidget)
+        self.btnLogo.setGeometry(QtCore.QRect(10, 0, 71, 71))
+        self.btnLogo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnLogo.setStyleSheet("\n"
+                                   "QPushButton {  \n"
+                                   "    background-color: rgb(0, 75, 63);\n"
+                                   "   font: 15pt \"Cooper Black\";\n"
+                                   "    color: rgb(255, 255, 255); /* Cor do texto */\n"
+                                   "    border-radius: 8px; /* Bordas arredondadas */\n"
+                                   "    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
+                                   "image:url(:/images/images/logofolha.png)\n"
+                                   "    \n"
+                                   "       \n"
+                                   "}\n"
+                                   "\n"
+                                   "\n"
+                                   "\n"
+                                   "\n"
+                                   "")
+        self.btnLogo.setText("")
+        self.btnLogo.setObjectName("btnLogo")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(0, 0, 931, 71))
         self.label_2.setStyleSheet("background-color: rgb(0, 75, 63);\n"
@@ -68,37 +84,26 @@ class Ui_MainWindow(object):
 "                        background-color: rgb(255, 255, 255);")
         self.label_3.setText("")
         self.label_3.setObjectName("label_3")
-        self.nomeLogo = QtWidgets.QPushButton(self.centralwidget)
-        self.nomeLogo.setGeometry(QtCore.QRect(60, 10, 181, 51))
-        self.nomeLogo.setStyleSheet("\n"
-"                        QPushButton {\n"
-"                        background-color: rgb(0, 75, 63);\n"
-"                        font: 15pt \"Cooper Black\";\n"
-"                        color: rgb(255, 255, 255); /* Cor do texto */\n"
-"                        border-radius: 8px; /* Bordas arredondadas */\n"
-"                        padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
-"\n"
-"\n"
-"                        }\n"
-"\n"
-"                        QPushButton:pressed{\n"
-"                        background-color: rgb(0, 75, 63);\n"
-"                        font: 15pt \"Cooper Black\";\n"
-"                        color: rgb(255, 255, 255); /* Cor do texto */\n"
-"                        border-radius: 8px; /* Bordas arredondadas */\n"
-"                        padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
-"\n"
-"                        border: 1px solid #CCCCCC;\n"
-"                        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */\n"
-"                        background-color: #D6D6D6; /* Fundo mais escuro */\n"
-"\n"
-"                        transform: translateY(2px); /* Deslocamento para baixo */\n"
-"\n"
-"                        }\n"
-"\n"
-"\n"
-"                    ")
-        self.nomeLogo.setObjectName("nomeLogo")
+        self.btnNomelogo = QtWidgets.QPushButton(self.centralwidget)
+        self.btnNomelogo.setGeometry(QtCore.QRect(70, 10, 181, 51))
+        self.btnNomelogo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnNomelogo.setStyleSheet("\n"
+
+                                       "QPushButton {  \n"
+                                       "    background-color: rgb(0, 75, 63);\n"
+                                       "   font: 15pt \"Cooper Black\";\n"
+                                       "    color: rgb(255, 255, 255); /* Cor do texto */\n"
+                                       "    border-radius: 8px; /* Bordas arredondadas */\n"
+                                       "    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
+                                       "    \n"
+                                       "       \n"
+                                       "}\n"
+                                       "\n"
+                                       "\n"
+                                       "\n"
+                                       "\n"
+                                       "")
+        self.btnNomelogo.setObjectName("btnNomelogo")
         self.botaoBuscar = QtWidgets.QPushButton(self.centralwidget)
         self.botaoBuscar.setGeometry(QtCore.QRect(690, 90, 41, 41))
         self.botaoBuscar.setStyleSheet("QPushButton {\n"
