@@ -1,0 +1,9 @@
+iniconfig==2.0.0
+packaging==24.2
+pluggy==1.5.0
+postgresdb @ file:///home/marcio/POO_II-Trabalho_Final/postgres_package/dist/postgresdb-0.1.0-py3-none-any.whl#sha256=be1568c38f81e6862544109016ccf68175a93ae6f831c362b44a64d1bc91f6ab
+psycopg2==2.9.10
+PyQt5==5.15.11
+PyQt5-Qt5==5.15.16
+PyQt5_sip==12.16.1
+pytest==8.3.4
