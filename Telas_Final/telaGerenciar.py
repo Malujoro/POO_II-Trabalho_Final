@@ -26,7 +26,13 @@ class TelaGerenciar(TelaGerenciarUi):
         self.tableWidget.itemChanged.connect(self.new_line1)
 
     def str_to_float(self, string):
-        return float(string.split()[1])
+        if("$ " in string):
+            return float(string.split()[1])
+        elif("R$" in string):
+            return float(string.split("$")[1])
+        else:
+            return float(string)
+            
 
     def is_row_empty(self, tableWidget, row):
         return all(
