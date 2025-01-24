@@ -156,7 +156,8 @@ class Ui_MainWindow(object):
         self.botaoBuscar.setText("")
         self.botaoBuscar.setObjectName("botaoBuscar")
         self.botaoCesta = QtWidgets.QPushButton(self.centralwidget)
-        self.botaoCesta.setGeometry(QtCore.QRect(818, 20, 91, 38))
+        self.botaoCesta.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.botaoCesta.setGeometry(QtCore.QRect(670, 20, 91, 38))
         self.botaoCesta.setStyleSheet("QPushButton {  \n"
 "    background-color: rgb(0, 75, 63);\n"
 "    font: 75 9pt \"MS Shell Dlg 2\";\n"
@@ -233,6 +234,53 @@ class Ui_MainWindow(object):
         self.label_30 = QtWidgets.QLabel(self.frame_7)
         self.label_30.setGeometry(QtCore.QRect(10, 30, 301, 91))
         self.label_30.setObjectName("label_30")
+        self.botaoGerencia = QtWidgets.QPushButton(self.centralwidget)
+        self.botaoGerencia.setCursor((QtGui.QCursor(QtCore.Qt.PointingHandCursor)))
+        self.botaoGerencia.setGeometry(QtCore.QRect(780, 20, 111, 38))
+        self.botaoGerencia.setStyleSheet("QPushButton {  \n"
+                                         "    \n"
+                                         "    background-color: rgb(0, 75, 63);\n"
+                                         "    font: 75 9pt \"MS Shell Dlg 2\";\n"
+                                         "    color: rgb(255, 255, 255); /* Cor do texto */\n"
+                                         "    border-radius: 8px; /* Bordas arredondadas */\n"
+                                         "    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
+                                         "   image: url(:/images/images/gerenciamento-de-projetos.png); /* Caminho da imagem */\n"
+                                         "    image-position:left;   \n"
+                                         "    text-align: right; /* Centraliza o texto */    \n"
+                                         "}\n"
+                                         "\n"
+                                         "QPushButton:hover{\n"
+                                         "  background-color: #E5E5E5;\n"
+                                         "    font: 75 9pt \"MS Shell Dlg 2\";\n"
+                                         "    color: rgb(255, 255, 255); /* Cor do texto */\n"
+                                         "    border-radius: 8px; /* Bordas arredondadas */\n"
+                                         "    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
+                                         "   image: url(:/images/images/gerenciamento-de-projetos.png); /* Caminho da imagem */\n"
+                                         "    image-position:left;   \n"
+                                         "    text-align: right; /* Centraliza o texto */\n"
+                                         "border: 1px solid #CCCCCC;\n"
+                                         "box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */\n"
+                                         "}\n"
+                                         "QPushButton:pressed{\n"
+                                         "background-color: #E5E5E5;\n"
+                                         "    font: 75 9pt \"MS Shell Dlg 2\";\n"
+                                         "    color: rgb(255, 255, 255); /* Cor do texto */\n"
+                                         "    border-radius: 8px; /* Bordas arredondadas */\n"
+                                         "    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
+                                         "  image: url(:/images/images/gerenciamento-de-projetos.png); /* Caminho da imagem */\n"
+                                         "    image-position:left;   \n"
+                                         "    text-align: right; /* Centraliza o texto */\n"
+                                         "border: 1px solid #CCCCCC;\n"
+                                         "box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */\n"
+                                         "background-color: #D6D6D6; /* Fundo mais escuro */\n"
+                                         "    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); /* Menor sombra */\n"
+                                         "    transform: translateY(2px); /* Deslocamento para baixo */\n"
+                                         "    border: 1px solid #AAAAAA; /* Borda mais escura */\n"
+                                         "}\n"
+                                         "\n"
+                                         "\n"
+                                         "")
+        self.botaoGerencia.setObjectName("botaoGerencia")
         self.label_15 = QtWidgets.QLabel(self.centralwidget)
         self.label_15.setGeometry(QtCore.QRect(240, 320, 81, 16))
         self.label_15.setStyleSheet("font: 9pt \"MS Shell Dlg 2\";")
@@ -258,6 +306,7 @@ class Ui_MainWindow(object):
         self.frame_5.raise_()
         self.frame_6.raise_()
         self.frame_7.raise_()
+        self.botaoGerencia.raise_()
         self.label_15.raise_()
         self.label.raise_()
         self.label_17.raise_()
@@ -325,6 +374,9 @@ class Ui_MainWindow(object):
         self.label_15.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-style:italic; color:#004b3f;\">&quot;Vitamina C&quot;</span></p></body></html>"))
         self.label.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Nenhum resultado encontrado para</span></p></body></html>"))
         self.label_17.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-style:italic; color:#004b3f;\">&quot;Vitamina C&quot;</span></p></body></html>"))
+        self.botaoGerencia.setWhatsThis(
+            _translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
+        self.botaoGerencia.setText(_translate("MainWindow", "GERENCIA"))
 import images_rc
 
 

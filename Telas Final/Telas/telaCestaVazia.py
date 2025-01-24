@@ -47,6 +47,7 @@ class Ui_MainWindow(object):
         self.label_2.setObjectName("label_2")
         self.botaoIrparaOfertas = QtWidgets.QPushButton(self.frame_8)
         self.botaoIrparaOfertas.setGeometry(QtCore.QRect(100, 500, 151, 38))
+        self.botaoIrparaOfertas.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.botaoIrparaOfertas.setStyleSheet("QPushButton {  \n"
 "    background-color: rgb(0, 75, 63);\n"
 "    font: 75 9pt \"MS Shell Dlg 2\";\n"
@@ -101,6 +102,8 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Cesta de Produtos"))
+        icon = QtGui.QIcon(":/images/images/logofolha.png")  # Caminho para sua imagem de logo
+        MainWindow.setWindowIcon(icon)
         self.label_3.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:400; color:#000000;\">Sua cesta está vazia</span></p></body></html>"))
         self.label_2.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" color:#004b3f;\">Confira nossas ofertas!</span></p></body></html>"))
         self.botaoIrparaOfertas.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
