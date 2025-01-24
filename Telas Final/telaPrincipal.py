@@ -16,6 +16,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from bd import Postgres
 from bd.entities.medicamento import Medicamento
+from chat import ClientWindow
 
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -35,7 +36,7 @@ class TelaPrincipal(TelaPrincipalUi):
 
         self.banco = Postgres()
         self.get_all_products()
-        # self.botaoChat.clicked.connect(self.chat_tela)
+        self.botaoChat.clicked.connect(self.chat_tela)
         self.botaoGerencia.clicked.connect(self.gerencia)
 
 
@@ -53,8 +54,9 @@ class TelaPrincipal(TelaPrincipalUi):
         self.nova_tela = TelaProdutos(self.mainWindow, self.medicamentos, self.cesta)
         pass
         
-    # def chat_tela(self):
-    #     self.nova_tela = TelaChat()
+    def chat_tela(self):
+        self.nova_tela = ClientWindow()
+        self.nova_tela.show()
 
     def get_all_products(self):
         self.medicamentos = []
