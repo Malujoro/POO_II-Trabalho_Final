@@ -361,7 +361,7 @@ class Ui_MainWindow(object):
         self.label_25.setGeometry(QtCore.QRect(10, 10, 91, 16))
         self.label_25.setObjectName("label_25")
         self.label_26 = QtWidgets.QLabel(self.frame_5)
-        self.label_26.setGeometry(QtCore.QRect(10, 10, 301, 91))
+        self.label_26.setGeometry(QtCore.QRect(10, 30, 301, 91))
         self.label_26.setObjectName("label_26")
         self.frame_6 = QtWidgets.QFrame(self.centralwidget)
         self.frame_6.setGeometry(QtCore.QRect(420, 680, 181, 131))
@@ -372,7 +372,7 @@ class Ui_MainWindow(object):
         self.label_27.setGeometry(QtCore.QRect(10, 10, 91, 16))
         self.label_27.setObjectName("label_27")
         self.label_28 = QtWidgets.QLabel(self.frame_6)
-        self.label_28.setGeometry(QtCore.QRect(10, 30, 301, 91))
+        self.label_28.setGeometry(QtCore.QRect(10, 10, 301, 91))
         self.label_28.setObjectName("label_28")
         self.frame_7 = QtWidgets.QFrame(self.centralwidget)
         self.frame_7.setGeometry(QtCore.QRect(710, 680, 171, 131))
@@ -383,22 +383,70 @@ class Ui_MainWindow(object):
         self.label_29.setGeometry(QtCore.QRect(10, 10, 111, 16))
         self.label_29.setObjectName("label_29")
         self.label_30 = QtWidgets.QLabel(self.frame_7)
-        self.label_30.setGeometry(QtCore.QRect(10, 30, 301, 91))
+        self.label_30.setGeometry(QtCore.QRect(10, 10, 301, 91))
         self.label_30.setObjectName("label_30")
+        self.botaoGerencia = QtWidgets.QPushButton(self.centralwidget)
+        self.botaoGerencia.setCursor((QtGui.QCursor(QtCore.Qt.PointingHandCursor)))
+        self.botaoGerencia.setGeometry(QtCore.QRect(780, 20, 111, 38))
+        self.botaoGerencia.setStyleSheet("QPushButton {  \n"
+                                         "    \n"
+                                         "    background-color: rgb(0, 75, 63);\n"
+                                         "    font: 75 9pt \"MS Shell Dlg 2\";\n"
+                                         "    color: rgb(255, 255, 255); /* Cor do texto */\n"
+                                         "    border-radius: 8px; /* Bordas arredondadas */\n"
+                                         "    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
+                                         "   image: url(:/images/images/gerenciamento-de-projetos.png); /* Caminho da imagem */\n"
+                                         "    image-position:left;   \n"
+                                         "    text-align: right; /* Centraliza o texto */    \n"
+                                         "}\n"
+                                         "\n"
+                                         "QPushButton:hover{\n"
+                                         "  background-color: #E5E5E5;\n"
+                                         "    font: 75 9pt \"MS Shell Dlg 2\";\n"
+                                         "    color: rgb(255, 255, 255); /* Cor do texto */\n"
+                                         "    border-radius: 8px; /* Bordas arredondadas */\n"
+                                         "    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
+                                         "   image: url(:/images/images/gerenciamento-de-projetos.png); /* Caminho da imagem */\n"
+                                         "    image-position:left;   \n"
+                                         "    text-align: right; /* Centraliza o texto */\n"
+                                         "border: 1px solid #CCCCCC;\n"
+                                         "box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */\n"
+                                         "}\n"
+                                         "QPushButton:pressed{\n"
+                                         "background-color: #E5E5E5;\n"
+                                         "    font: 75 9pt \"MS Shell Dlg 2\";\n"
+                                         "    color: rgb(255, 255, 255); /* Cor do texto */\n"
+                                         "    border-radius: 8px; /* Bordas arredondadas */\n"
+                                         "    padding: 10px; /* Padding interno (topo, direita, fundo, esquerda) */\n"
+                                         "  image: url(:/images/images/gerenciamento-de-projetos.png); /* Caminho da imagem */\n"
+                                         "    image-position:left;   \n"
+                                         "    text-align: right; /* Centraliza o texto */\n"
+                                         "border: 1px solid #CCCCCC;\n"
+                                         "box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */\n"
+                                         "background-color: #D6D6D6; /* Fundo mais escuro */\n"
+                                         "    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); /* Menor sombra */\n"
+                                         "    transform: translateY(2px); /* Deslocamento para baixo */\n"
+                                         "    border: 1px solid #AAAAAA; /* Borda mais escura */\n"
+                                         "}\n"
+                                         "\n"
+                                         "\n"
+                                         "")
+        self.botaoGerencia.setObjectName("botaoGerencia")
         self.label_3.raise_()
         self.label_8.raise_()
         self.frame.raise_()
         self.label_2.raise_()
         self.LineBuscar.raise_()
         self.label_7.raise_()
-        self.nomeLogo.raise_()
-        self.logo.raise_()
+        self.btnLogo.raise_()
+        self.btnNomelogo.raise_()
         self.botaoBuscar.raise_()
         self.frame_2.raise_()
         self.botaoCesta.raise_()
         self.frame_5.raise_()
         self.frame_6.raise_()
         self.frame_7.raise_()
+        self.botaoGerencia.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -416,9 +464,11 @@ class Ui_MainWindow(object):
 "                        src=\":/images/images/lupa.png\"/></p></body></html>"))
         self.LineBuscar.setPlaceholderText(_translate("MainWindow", "O que você está procurando?"))
         self.label_7.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600; color:#004b3f;\">Nossos produtos:</span></p></body></html>"))
-        self.nomeLogo.setWhatsThis(_translate("MainWindow", "<html><head/><body><p\n"
-"                        align=\"right\"><br/></p></body></html>"))
-        self.nomeLogo.setText(_translate("MainWindow", "DrogaLaugh"))
+        self.btnNomelogo.setWhatsThis(
+                _translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
+        self.btnNomelogo.setText(_translate("MainWindow", "DrogaLaugh"))
+
+
         self.botaoBuscar.setWhatsThis(_translate("MainWindow", "<html><head/><body><p\n"
 "                        align=\"right\"><br/></p></body></html>"))
         self.label_6.setText(_translate("MainWindow", "- 15%"))
@@ -443,27 +493,16 @@ class Ui_MainWindow(object):
         self.botaoCesta.setWhatsThis(_translate("MainWindow", "<html><head/><body><p\n"
 "                        align=\"right\"><br/></p></body></html>"))
         self.botaoCesta.setText(_translate("MainWindow", "R$0,00"))
-        self.label_25.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:9pt;\n"
-"                            font-weight:600; color:#ffffff;\">Sobre\n"
-"                            Nós</span></p></body></html>"))
-        self.label_26.setText(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\"\n"
-"                            \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"                            <html><head><meta name=\"qrichtext\" content=\"1\"\n"
-"                            /><style type=\"text/css\">\n"
-"                            p, li { white-space: pre-wrap; }\n"
-"                            </style></head><body style=\" font-family:\'MS Shell Dlg 2\';\n"
-"                            font-size:8pt; font-weight:400; font-style:normal;\">\n"
-"                            <p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px;\n"
-"                            -qt-block-indent:0; text-indent:0px;\"><span style=\"\n"
-"                            color:#ffffff;\">A DrogaLaugh é sua farmácia de confiança,\n"
-"                            oferecendo</span></p>\n"
-"                            <p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px;\n"
-"                            -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">\n"
-"                            produtos de qualidade e atendimento excepcional </span></p>\n"
-"                            <p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px;\n"
-"                            -qt-block-indent:0; text-indent:0px;\"><span style=\"\n"
-"                            color:#ffffff;\">desde 2024.</span></p></body></html>\n"
-"                        "))
+        self.label_25.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:9pt; font-weight:600; color:#ffffff;\">Sobre Nós</span></p></body></html>"))
+        self.label_26.setText(_translate("MainWindow",
+                                         "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                         "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                         "p, li { white-space: pre-wrap; }\n"
+                                         "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
+                                         "<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">A DrogaLaugh é sua farmácia de confiança, oferecendo</span></p>\n"
+                                         "<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\"> produtos de qualidade e atendimento excepcional </span></p>\n"
+                                         "<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">desde 2024.</span></p></body></html>"))
+
         self.label_27.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:9pt;\n"
 "                            font-weight:600;\n"
 "                            color:#ffffff;\">Contatos</span></p></body></html>"))
@@ -502,6 +541,9 @@ class Ui_MainWindow(object):
                 "<p><img src=\":/images/images/facebook.png\" height=\"16\" width=\"16\" /><span> Droga Laugh</span></p>\n"
                 "</body></html>"
         ))
+        self.botaoGerencia.setWhatsThis(
+                _translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
+        self.botaoGerencia.setText(_translate("MainWindow", "GERENCIA"))
 import images_rc
 
 

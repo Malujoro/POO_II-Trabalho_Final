@@ -898,7 +898,7 @@ class TelaPrincipalUi(object):
         self.botaoGerencia.setText(_translate("MainWindow", "GERENCIA"))
         self.btnLogo.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
 
-
+import images_rc
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
