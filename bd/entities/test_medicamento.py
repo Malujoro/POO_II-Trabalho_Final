@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import Mock, patch
-from medicamento import Medicamento
+from .medicamento import Medicamento
 """
 Importações:
 1. Framework de testes para executar os testes unitários.

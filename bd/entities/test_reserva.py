@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import Mock, patch
-from reserva import Reserva
+from .reserva import Reserva
 """
 Importações:
 1. Framework de testes para executar os testes unitários.

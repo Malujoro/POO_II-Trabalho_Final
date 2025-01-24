@@ -1,8 +1,8 @@
 import pytest
 from unittest.mock import Mock, patch, call
-from postgres import Postgres
 from datetime import datetime
-from medicamento import Medicamento
+from .postgres import Postgres
+from .entities import Medicamento
 """
 Importações:
 1. Importa o framework pytest utilizado para realizar testes unitários.
@@ -231,7 +231,7 @@ class TestPostgres:
         postgres.delete_medicamento_by_id(id)
 
         mock_cursor.execute.assert_called_with(
-            """DELETE FROM medicamento WHERE medicamento_id = %s;""", id)
+            """DELETE FROM medicamento WHERE medicamento_id = %s;""", (id, ))
         mock_conn.commit.assert_called_once()
 
     @pytest.mark.parametrize("nome, preco, quantidade_estoque, id", [
@@ -310,7 +310,7 @@ class TestPostgres:
         mock_cursor.execute.assert_called_with(
             """
             SELECT r.reserva_id, r.cpf_cliente, r.nome_cliente, r.data_limite, 
-                rm.medicamento_id, m.nome, rm.quantidade
+                rm.medicamento_id, m.preco, m.nome, rm.quantidade
             FROM reservas r
             LEFT JOIN reserva_medicamentos rm ON r.reserva_id = rm.reserva_id
             LEFT JOIN medicamento m ON rm.medicamento_id = m.medicamento_id

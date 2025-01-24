@@ -2,8 +2,8 @@ import pytest
 from unittest.mock import MagicMock, patch
 import socket
 import threading
-from server import ChatServer
-from variaveis import *
+from .server import ChatServer
+from .variaveis import *
 
 """
 Importações:
@@ -26,7 +26,7 @@ class TestServer:
     """
 
     @pytest.fixture
-    def patch_socket(self, mock_socket):
+    def patch_socket(self):
         """
         Método patch_socket (Fixture):
 

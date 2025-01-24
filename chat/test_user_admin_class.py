@@ -1,8 +1,8 @@
 import pytest
 from unittest.mock import Mock, patch
 import socket
-from user_class import User
-from variaveis import *
+from .user_class import User
+from .variaveis import *
 
 """
 Importações:
@@ -23,7 +23,7 @@ class TestUserAdmin:
     """
 
     @pytest.fixture
-    def patch_socket(self, mock_socket):
+    def patch_socket(self):
         """
         Método patch_socket:
 

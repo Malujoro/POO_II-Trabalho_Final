@@ -1,8 +1,8 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTextEdit, QLineEdit, QPushButton, QVBoxLayout, QWidget, QLabel
 from PyQt5.QtCore import QThread, pyqtSignal
-from user_class import User
-from variaveis import NOME_ADMIN
+from .user_class import User
+from .variaveis import NOME_ADMIN
 """
 Importações:
 

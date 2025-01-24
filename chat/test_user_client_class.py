@@ -1,8 +1,8 @@
 import pytest
 from unittest.mock import Mock, patch
 import socket
-from user_class import User
-from variaveis import *
+from .user_class import User
+from .variaveis import *
 
 """
 Importações:
@@ -23,7 +23,7 @@ class TestUserAdmin:
     """
 
     @pytest.fixture
-    def patch_socket(self, mock_socket):
+    def patch_socket(self):
         """
         Método patch_socket:
 
@@ -86,7 +86,7 @@ class TestUserAdmin:
         assert usuario.endereco == ADDR
 
         usuario.socket_user.connect.assert_called_with(ADDR)
-        usuario.socket_user.settimeout.assert_not_called()
+        usuario.socket_user.settimeout.assert_called_once()
         usuario.socket_user.send.assert_called_with("Usuario".encode())
 
     def test_usuario_nome_setter(self, usuario: User):
@@ -158,7 +158,7 @@ class TestUserAdmin:
         """
         usuario.iniciar_conexao()
         usuario.socket_user.connect.assert_called_with(ADDR)
-        usuario.socket_user.settimeout.assert_not_called()
+        usuario.socket_user.settimeout.asser_called_once()
         usuario.socket_user.send.assert_called_with("Usuario".encode())
 
     def test_usuario_escutar_mensagens(self, usuario: User):

@@ -1,5 +1,5 @@
 import socket
-from variaveis import *
+from .variaveis import *
 """
 Importações:
 1. Importa o módulo socket para criação e manipulação de conexões de rede.
