@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
+class TelaBuscaUi(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(931, 840)
@@ -549,14 +549,13 @@ class Ui_MainWindow(object):
                 _translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
         self.botaoGerencia.setText(_translate("MainWindow", "GERENCIA"))
         self.botaoBuscar_2.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
-import images_rc
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = TelaBuscaUi()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

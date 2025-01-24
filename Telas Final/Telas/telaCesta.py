@@ -227,7 +227,6 @@ class TelaCestaUi(object):
         self.label_9.setText(_translate("MainWindow", "R$ 76.42"))
         self.label_10.setText(_translate("MainWindow", "R$ 89.90"))
 
-import images_rc
 # Execução da aplicação
 if __name__ == "__main__":
     import sys
