@@ -118,7 +118,7 @@ class ChatServer:
                 self.usuarios.clear()
 
             else:
-                print(f"Cliente {nome} desconectado")
+                # print(f"Cliente {nome} desconectado")
                 if self.funcionario_socket:
                     try:
                         self.funcionario_socket.send(
