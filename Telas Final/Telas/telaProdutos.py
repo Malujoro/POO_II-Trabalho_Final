@@ -375,7 +375,7 @@ class TelaProdutos(object):
         self.btnLogo.raise_()
         self.btnNomelogo.raise_()
         self.botaoBuscar.raise_()
-        
+
         self.botaoCesta.raise_()
 
         self.botaoGerencia.raise_()

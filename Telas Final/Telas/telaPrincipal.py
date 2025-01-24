@@ -321,18 +321,9 @@ class TelaPrincipalUi(object):
         self.frame.setObjectName("frame")
         self.label = QtWidgets.QLabel(self.frame)
         self.label.setGeometry(QtCore.QRect(0, 0, 161, 121))
-        self.label.setStyleSheet("background-color: rgb(165, 165, 165);\n"
-"border-color: rgb(0, 0, 0);")
+        self.label.setStyleSheet("image: url(:/images/images/medicina-natural.png);")
         self.label.setText("")
         self.label.setObjectName("label")
-        self.label_6 = QtWidgets.QLabel(self.frame)
-        self.label_6.setGeometry(QtCore.QRect(110, 10, 41, 31))
-        self.label_6.setStyleSheet("border-radius: 8px;\n"
-"background-color: rgb(255, 0, 0);\n"
-"font: 75 8pt \"MS Shell Dlg 2\";\n"
-"color: rgb(255, 255, 255);\n"
-"padding:2px;")
-        self.label_6.setObjectName("label_6")
         self.label_5 = QtWidgets.QLabel(self.frame)
         self.label_5.setGeometry(QtCore.QRect(10, 120, 131, 31))
         self.label_5.setObjectName("label_5")
@@ -399,14 +390,6 @@ class TelaPrincipalUi(object):
         self.frame_2.setStyleSheet(
                 "background-color: white; ")
         self.frame_2.setObjectName("frame_2")
-        self.label_11 = QtWidgets.QLabel(self.frame_2)
-        self.label_11.setGeometry(QtCore.QRect(110, 10, 41, 31))
-        self.label_11.setStyleSheet("border-radius: 8px;\n"
-"background-color: rgb(255, 0, 0);\n"
-"font: 75 8pt \"MS Shell Dlg 2\";\n"
-"color: rgb(255, 255, 255);\n"
-"padding:2px;")
-        self.label_11.setObjectName("label_11")
         self.label_12 = QtWidgets.QLabel(self.frame_2)
         self.label_12.setGeometry(QtCore.QRect(10, 120, 131, 31))
         self.label_12.setObjectName("label_12")
@@ -468,18 +451,12 @@ class TelaPrincipalUi(object):
         self.BotaoAddCesta_2.setObjectName("BotaoAddCesta_2")
         self.label_4 = QtWidgets.QLabel(self.frame_2)
         self.label_4.setGeometry(QtCore.QRect(0, 0, 161, 121))
-        self.label_4.setStyleSheet("""
-            background-image: url(:/images/images/drogas.png);
-            background-repeat: no-repeat;
-            background-position: center;
-            border-radius: 8px;
-            border: 1px solid rgb(0, 0, 0);
-        """)
+        self.label_4.setStyleSheet("image: url(:/images/images/drogas.png);")
+
         self.label_4.setText("")
         self.label_4.setObjectName("label_4")
         self.label_4.raise_()
         self.BotaoAddCesta_2.raise_()
-        self.label_11.raise_()
         self.label_12.raise_()
         self.label_13.raise_()
         self.label_14.raise_()
@@ -561,8 +538,7 @@ class TelaPrincipalUi(object):
         self.BotaoAddCesta_3.setObjectName("BotaoAddCesta_3")
         self.label_19 = QtWidgets.QLabel(self.frame_3)
         self.label_19.setGeometry(QtCore.QRect(0, 0, 161, 121))
-        self.label_19.setStyleSheet("background-color: rgb(165, 165, 165);\n"
-"border-color: rgb(0, 0, 0);")
+        self.label_19.setStyleSheet("image: url(:/images/images/medicina.png);")
         self.label_19.setText("")
         self.label_19.setObjectName("label_19")
         self.frame_4 = QtWidgets.QFrame(self.centralwidget)
@@ -641,8 +617,7 @@ class TelaPrincipalUi(object):
         self.BotaoAddCesta_4.setObjectName("BotaoAddCesta_4")
         self.label_24 = QtWidgets.QLabel(self.frame_4)
         self.label_24.setGeometry(QtCore.QRect(0, 0, 161, 121))
-        self.label_24.setStyleSheet("background-color: rgb(165, 165, 165);\n"
-"border-color: rgb(0, 0, 0);")
+        self.label_24.setStyleSheet("image: url(:/images/images/curativo.png);")
         self.label_24.setText("")
         self.label_24.setObjectName("label_24")
         self.botaoCesta = QtWidgets.QPushButton(self.centralwidget)
@@ -844,12 +819,12 @@ class TelaPrincipalUi(object):
         self.botaoReservar.setText(_translate("MainWindow", "Reserve seus produtos"))
 
         self.botaoChat.setText(_translate("MainWindow", "Converse com nosso CHAT"))
-        self.label_6.setText(_translate("MainWindow", "- 15%"))
+
         self.label_5.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Vitamina C 1000mg</span></p></body></html>"))
         self.label_9.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">R$ 76.42 </span></p></body></html>"))
         self.label_10.setText(_translate("MainWindow", "<html><head/><body><p>R$ 89.90</p></body></html>"))
         self.BotaoAddCesta.setText(_translate("MainWindow", "ADICIONAR"))
-        self.label_11.setText(_translate("MainWindow", "- 15%"))
+
         self.label_12.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Vitamina C 1000mg</span></p></body></html>"))
         self.label_13.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">R$ 76.42 </span></p></body></html>"))
         self.label_14.setText(_translate("MainWindow", "<html><head/><body><p>R$ 89.90</p></body></html>"))
