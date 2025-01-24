@@ -2,6 +2,7 @@ from PyQt5 import uic, QtWidgets, QtCore
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton
 import sys
 from Telas.telaCesta import TelaCestaUi
+from functools import partial
 import Telas.images_rc
 import os 
 
@@ -17,9 +18,11 @@ class TelaCesta(TelaCestaUi):
     def __init__(self, mainWindow, cesta = []):
         super().setupUi(mainWindow)
         mainWindow.show()
+        self.mainWindow = mainWindow
         self.cesta = cesta
         self.label_5.setText(self.cesta[0].nome)
         self.label_9.setText(f"R$ {self.cesta[0].preco:.2f}")
+        self.botaoCesta_2.clicked.connect(partial(self.remover, cesta[0]))
         self.next_item_y = 250
         self.banco = Postgres()
         
@@ -43,10 +46,10 @@ class TelaCesta(TelaCestaUi):
             frame.setObjectName(f"frame_item_{self.next_item_y}")
 
             # Create widgets with consistent styling
-            label_image = self._create_image_label(frame)
-            label_description = self._create_description_label(frame, description)
-            label_price = self._create_price_label(frame, price)
-            remove_button = self._create_remove_button(frame)
+            self.label_image = self._create_image_label(frame)
+            self.label_description = self._create_description_label(frame, description)
+            self.label_price = self._create_price_label(frame, price)
+            self.remove_button = self._create_remove_button(frame)
 
             # Update next item position
             self.next_item_y += 120
@@ -94,6 +97,11 @@ class TelaCesta(TelaCestaUi):
 # Converter para string no formato PostgreSQL (yyyy-MM-dd HH:mm:ss)
 
         pass
+
+    def remover(self, medicamento):
+        if medicamento in self.cesta:
+            self.cesta.remove(medicamento)
+        self.mainWindow.close()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

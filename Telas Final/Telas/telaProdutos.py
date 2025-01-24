@@ -242,7 +242,7 @@ class TelaProdutosUi(object):
         self.tableWidget.verticalHeader().setDefaultSectionSize(50)  # Define a altura de todas as linhas para 50 pixels
 
         # Definindo o cabeçalho da tabela
-        self.tableWidget.setHorizontalHeaderLabels(["Id", "Produto", "Valor", ""])
+        self.tableWidget.setHorizontalHeaderLabels(["Nome", "Preço", "Quantidade", ""])
 
         # Ajuste das larguras das colunas
         self.tableWidget.setColumnWidth(0, 100)

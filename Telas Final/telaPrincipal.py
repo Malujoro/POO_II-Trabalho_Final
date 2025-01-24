@@ -6,6 +6,8 @@ from telaCestaVazia import TelaCestaVazia
 from telaCesta import TelaCesta
 from telaGerenciar import TelaGerenciar
 from telaProdutos import TelaProdutos
+from telaBuscar import TelaBuscar
+from telaBuscarVazia import TelaBuscarVazia
 from Telas.telaPrincipal import TelaPrincipalUi
 # from ..telaChat import TelaChat
 from functools import partial
@@ -37,7 +39,13 @@ class TelaPrincipal(TelaPrincipalUi):
         self.banco = Postgres()
         self.get_all_products()
         self.botaoChat.clicked.connect(self.chat_tela)
+
         self.botaoGerencia.clicked.connect(self.gerencia)
+
+        self.botaoBuscar.clicked.connect(self.buscar_tela)
+
+    def fechar(self):
+        self.mainWindow.close()
 
 
     def cesta_tela(self):
@@ -45,6 +53,18 @@ class TelaPrincipal(TelaPrincipalUi):
             self.nova_tela = TelaCestaVazia(self.mainWindow)
         else:
             self.nova_tela = TelaCesta(self.mainWindow, self.cesta)
+
+    def buscar_tela(self):
+        self.encontrados = []
+        nome = self.LineBuscar.text()
+        for medic in self.medicamentos:
+            if(nome.lower() in medic.nome.lower()):
+                self.encontrados.append(medic)
+
+        if(len(self.encontrados) == 0):
+            self.nova_tela = TelaBuscarVazia(self.mainWindow, nome)
+        else:
+            self.nova_tela = TelaBuscar(self.mainWindow, nome, self.encontrados, self.cesta)
     
     def gerencia(self):
         self.nova_tela = TelaGerenciar(self.mainWindow)  
@@ -74,6 +94,8 @@ class TelaPrincipal(TelaPrincipalUi):
             botoes[cont].clicked.connect(partial(self.add_cesta, medic))
             
             cont += 1
+            if(cont == 4):
+                break
 
     def add_cesta(self, medicamento):
         if medicamento not in self.cesta:

@@ -28,6 +28,9 @@ class TelaProdutos(TelaProdutosUi):
         self.cesta = cesta
         self.mainWindow = QtWidgets.QMainWindow()
         self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.botaoCesta.clicked.connect(self.cesta_tela)
+        self.botaoGerencia.clicked.connect(self.gerencia)
+
         self.get_all_products()
         # self.botaoGerencia.clicked.connect(self.gerencia)
 
@@ -92,6 +95,16 @@ class TelaProdutos(TelaProdutosUi):
                        """)
         return button
         
+    def cesta_tela(self):
+        if(len(self.cesta) == 0):
+            self.nova_tela = TelaCestaVazia(self.mainWindow)
+        else:
+            self.nova_tela = TelaCesta(self.mainWindow, self.cesta)
+
+    def gerencia(self):
+        self.nova_tela = TelaGerenciar(self.mainWindow)  
+
+    
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     MainWindow = QMainWindow()

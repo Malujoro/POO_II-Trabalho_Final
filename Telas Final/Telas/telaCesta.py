@@ -126,7 +126,7 @@ class TelaCestaUi(object):
         # Imagem do item
         self.label_4 = QtWidgets.QLabel(self.frame_2)
         self.label_4.setGeometry(QtCore.QRect(0, 20, 91, 81))
-        self.label_4.setStyleSheet("background-color: rgb(165, 165, 165);\nborder-radius:8px;")
+        self.label_4.setStyleSheet("image: url(:/images/images/medicina-natural.png);")
         self.label_4.setObjectName("label_4")
 
         # Descrição do item
