@@ -383,7 +383,7 @@ class Ui_MainWindow(object):
         self.label_29.setGeometry(QtCore.QRect(10, 10, 111, 16))
         self.label_29.setObjectName("label_29")
         self.label_30 = QtWidgets.QLabel(self.frame_7)
-        self.label_30.setGeometry(QtCore.QRect(10, 10, 301, 91))
+        self.label_30.setGeometry(QtCore.QRect(10, 20, 301, 91))
         self.label_30.setObjectName("label_30")
         self.botaoGerencia = QtWidgets.QPushButton(self.centralwidget)
         self.botaoGerencia.setCursor((QtGui.QCursor(QtCore.Qt.PointingHandCursor)))
