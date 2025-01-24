@@ -179,6 +179,8 @@ class TelaCestaUi(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Cesta de Produtos"))
+        icon = QtGui.QIcon(":/images/images/logofolha.png")  # Caminho para sua imagem de logo
+        MainWindow.setWindowIcon(icon)
         self.label_3.setText(_translate("MainWindow", "<html><head/><body><p>Cesta</p></body></html>"))
         self.label_2.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" color:#004b3f;\">1 item</span></p></body></html>"))
         self.botaoCesta.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
